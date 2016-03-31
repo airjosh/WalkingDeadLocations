@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04441BC01CAC935700EFC4BC /* SpotDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */; };
+		04441BC31CAC938A00EFC4BC /* SpotDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 04441BC21CAC938A00EFC4BC /* SpotDetail.m */; };
 		044F56E51CAC7883005F2A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56E41CAC7883005F2A4D /* main.m */; };
 		044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56E71CAC7883005F2A4D /* AppDelegate.m */; };
-		044F56EB1CAC7883005F2A4D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56EA1CAC7883005F2A4D /* ViewController.m */; };
 		044F56EE1CAC7883005F2A4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F56EC1CAC7883005F2A4D /* Main.storyboard */; };
 		044F56F11CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 044F56EF1CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld */; };
 		044F56F31CAC7883005F2A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044F56F21CAC7883005F2A4D /* Assets.xcassets */; };
 		044F56F61CAC7883005F2A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F56F41CAC7883005F2A4D /* LaunchScreen.storyboard */; };
 		044F57011CAC7884005F2A4D /* WalkingDeadLocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F57001CAC7884005F2A4D /* WalkingDeadLocationsTests.m */; };
 		044F570C1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F570B1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m */; };
+		04DA04301CACA1D000DA871B /* SpotsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA042F1CACA1D000DA871B /* SpotsList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,12 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04441BBE1CAC935700EFC4BC /* SpotDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotDetailCell.h; sourceTree = "<group>"; };
+		04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotDetailCell.m; sourceTree = "<group>"; };
+		04441BC11CAC938A00EFC4BC /* SpotDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotDetail.h; sourceTree = "<group>"; };
+		04441BC21CAC938A00EFC4BC /* SpotDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotDetail.m; sourceTree = "<group>"; };
 		044F56E01CAC7883005F2A4D /* WalkingDeadLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkingDeadLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		044F56E41CAC7883005F2A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		044F56E61CAC7883005F2A4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		044F56E71CAC7883005F2A4D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		044F56E91CAC7883005F2A4D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		044F56EA1CAC7883005F2A4D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		044F56ED1CAC7883005F2A4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		044F56F01CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalkingDeadLocations.xcdatamodel; sourceTree = "<group>"; };
 		044F56F21CAC7883005F2A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 		044F57071CAC7884005F2A4D /* WalkingDeadLocationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalkingDeadLocationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		044F570B1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalkingDeadLocationsUITests.m; sourceTree = "<group>"; };
 		044F570D1CAC7884005F2A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04DA042E1CACA1D000DA871B /* SpotsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotsList.h; sourceTree = "<group>"; };
+		04DA042F1CACA1D000DA871B /* SpotsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotsList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04441BB91CAC8AA600EFC4BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				044F56EC1CAC7883005F2A4D /* Main.storyboard */,
+				044F56F41CAC7883005F2A4D /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		04441BBA1CAC8AC100EFC4BC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				044F56E61CAC7883005F2A4D /* AppDelegate.h */,
+				044F56E71CAC7883005F2A4D /* AppDelegate.m */,
+				04441BC11CAC938A00EFC4BC /* SpotDetail.h */,
+				04441BC21CAC938A00EFC4BC /* SpotDetail.m */,
+				04441BBE1CAC935700EFC4BC /* SpotDetailCell.h */,
+				04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */,
+				04DA042E1CACA1D000DA871B /* SpotsList.h */,
+				04DA042F1CACA1D000DA871B /* SpotsList.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		04441BC41CAC999A00EFC4BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				044F56EF1CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		044F56D71CAC7883005F2A4D = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +141,10 @@
 		044F56E21CAC7883005F2A4D /* WalkingDeadLocations */ = {
 			isa = PBXGroup;
 			children = (
-				044F56E61CAC7883005F2A4D /* AppDelegate.h */,
-				044F56E71CAC7883005F2A4D /* AppDelegate.m */,
-				044F56E91CAC7883005F2A4D /* ViewController.h */,
-				044F56EA1CAC7883005F2A4D /* ViewController.m */,
-				044F56EC1CAC7883005F2A4D /* Main.storyboard */,
+				04441BC41CAC999A00EFC4BC /* Model */,
+				04441BBA1CAC8AC100EFC4BC /* Controller */,
+				04441BB91CAC8AA600EFC4BC /* View */,
 				044F56F21CAC7883005F2A4D /* Assets.xcassets */,
-				044F56F41CAC7883005F2A4D /* LaunchScreen.storyboard */,
-				044F56F71CAC7883005F2A4D /* Info.plist */,
-				044F56EF1CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld */,
 				044F56E31CAC7883005F2A4D /* Supporting Files */,
 			);
 			path = WalkingDeadLocations;
@@ -120,6 +153,7 @@
 		044F56E31CAC7883005F2A4D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				044F56F71CAC7883005F2A4D /* Info.plist */,
 				044F56E41CAC7883005F2A4D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -273,8 +307,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04441BC01CAC935700EFC4BC /* SpotDetailCell.m in Sources */,
 				044F56F11CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld in Sources */,
-				044F56EB1CAC7883005F2A4D /* ViewController.m in Sources */,
+				04441BC31CAC938A00EFC4BC /* SpotDetail.m in Sources */,
+				04DA04301CACA1D000DA871B /* SpotsList.m in Sources */,
 				044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */,
 				044F56E51CAC7883005F2A4D /* main.m in Sources */,
 			);
@@ -502,6 +538,7 @@
 				044F57121CAC7884005F2A4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		044F57131CAC7884005F2A4D /* Build configuration list for PBXNativeTarget "WalkingDeadLocationsTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +547,7 @@
 				044F57151CAC7884005F2A4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		044F57161CAC7884005F2A4D /* Build configuration list for PBXNativeTarget "WalkingDeadLocationsUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +556,7 @@
 				044F57181CAC7884005F2A4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

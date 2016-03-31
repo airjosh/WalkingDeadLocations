@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SpotDetailCell.h
 //  WalkingDeadLocations
 //
 //  Created by MCS on 3/30/16.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
-
+@interface SpotDetailCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *spotNameLbl;
 
 @end
-

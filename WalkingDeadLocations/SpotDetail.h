@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SpotDetail.h
 //  WalkingDeadLocations
 //
 //  Created by MCS on 3/30/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
-
+@interface SpotDetail : UIViewController
 
 @end
-
