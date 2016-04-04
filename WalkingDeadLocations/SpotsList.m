@@ -9,8 +9,9 @@
 #import "SpotsList.h"
 #import "SpotDetailCell.h"
 #import "SpotDetail.h"
+#import "DataRetriever.h"
 
-@interface SpotsList ()
+@interface SpotsList () <DataRetrieverDelegate>
 
 
 @property (nonatomic,strong) NSArray * data;
@@ -24,12 +25,16 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.data = @[@"monday",@"friday",@"sunday"];
+   
+    
+    DataRetriever * dataRetriever = [[DataRetriever alloc] init];
+    dataRetriever.delegate = self;
+    [dataRetriever setUpInformation];
     
 }
 
@@ -38,15 +43,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark: - Data Retriever Delegate
+- (void) dataRetriever: (DataRetriever *) dataRetriever didFinishSetUpInformation:(NSArray *)dataArray{
+    self.data = dataArray;
+    NSLog(@"data from method : %@",dataArray);
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
+// #warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
+// #warning Incomplete implementation, return the number of rows
     return self.data.count;
 }
 
