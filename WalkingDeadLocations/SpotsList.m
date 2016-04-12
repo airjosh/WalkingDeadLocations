@@ -222,17 +222,25 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    SpotDetail *detailViewController = (SpotDetail *)segue.destinationViewController;
     
-    // Get the index of the selected cell
-    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-    
-    // Set the title of the destination view controller
-    // detailViewController.navigationItem.title = self.data[indexPath.row];
-    NSString* string = self.data[indexPath.row];
-    
-    
-    detailViewController.navigationItem.title = string;
+    if ([segue.identifier isEqualToString:@"toSpotDetail"]) {
+        SpotDetail *view = segue.destinationViewController;
+        
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:indexPath.section]];
+        view.location = [self.arrCurrentSeason objectAtIndex:indexPath.row];
+    }
+//    SpotDetail *detailViewController = (SpotDetail *)segue.destinationViewController;
+//    
+//    // Get the index of the selected cell
+//    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+//    
+//    // Set the title of the destination view controller
+//    // detailViewController.navigationItem.title = self.data[indexPath.row];
+//    NSString* string = self.data[indexPath.row];
+//    
+//    
+//    detailViewController.navigationItem.title = string;
     
 }
 

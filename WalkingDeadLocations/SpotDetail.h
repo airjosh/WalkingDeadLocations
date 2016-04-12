@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Location.h"
 
 @interface SpotDetail : UIViewController
+@property (strong, nonatomic) Location *location;
 
 @end

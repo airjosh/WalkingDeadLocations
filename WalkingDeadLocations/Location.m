@@ -11,6 +11,14 @@
 
 @implementation Location
 
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        self.point = [[GPSPoint alloc] init];
+    }
+    return self;
+}
+
 -(NSString *)description{
     NSString *locationDescription;
     if (self.path != nil) {

@@ -36,7 +36,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="spotNameLbl" destination="gek-Na-e2d" id="4Jm-1u-UEz"/>
-                                    <segue destination="aUa-lr-GZz" kind="show" identifier="detailSpotSegue" id="ZVt-Ch-nx4"/>
+                                    <segue destination="aUa-lr-GZz" kind="show" identifier="toSpotDetail" id="ZVt-Ch-nx4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,22 +63,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puT-OA-zcA">
-                                <rect key="frame" x="74" y="109" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-iL-Up2">
                                 <rect key="frame" x="9" y="361" width="397" height="367"/>
                                 <connections>
                                     <outlet property="delegate" destination="aUa-lr-GZz" id="XG2-9o-XWI"/>
                                 </connections>
                             </mapView>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wh4-tA-4Ks">
+                                <rect key="frame" x="9" y="85" width="397" height="263"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aUa-lr-GZz" id="YvB-YO-VQU"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="mapView" destination="qC8-iL-Up2" id="NcD-L5-GXA"/>
+                        <outlet property="webContentView" destination="Wh4-tA-4Ks" id="9C8-WA-KPy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbx-NC-DGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -77,8 +77,8 @@
                 NSArray *arrCoordinates = [[NSArray alloc] initWithArray:[strCoord componentsSeparatedByString:@","]];
                 
                 if ([arrCoordinates count] > 2) {
-                    newLocation.point.latitude = [NSNumber numberWithDouble:[[arrCoordinates objectAtIndex:0] doubleValue]];
-                    newLocation.point.longitude = [NSNumber numberWithDouble:[[arrCoordinates objectAtIndex:1] doubleValue]];
+                    newLocation.point.latitude = [NSNumber numberWithDouble:[[arrCoordinates objectAtIndex:1] doubleValue]];
+                    newLocation.point.longitude = [NSNumber numberWithDouble:[[arrCoordinates objectAtIndex:0] doubleValue]];
                 }
             }
             
