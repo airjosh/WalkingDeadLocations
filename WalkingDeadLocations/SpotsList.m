@@ -125,59 +125,59 @@
 //    return [self.arrSeasons objectAtIndex:section];
 //}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 60;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *headerLabel = [[UILabel alloc]init];
-    headerLabel.tag = section;
-    headerLabel.userInteractionEnabled = YES;
-    headerLabel.backgroundColor = [[UIColor grayColor]colorWithAlphaComponent:0.2];
+    UIView *cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
+    
+    cellView.tag = section;
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, tableView.frame.size.width - 50, cellView.frame.size.height)];
+//    headerLabel.tag = section;
+    cellView.userInteractionEnabled = YES;
+    cellView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:0.9];
     headerLabel.text = [self.arrSeasons objectAtIndex:section];
-    headerLabel.frame = CGRectMake(25, 0, tableView.tableHeaderView.frame.size.width, tableView.tableHeaderView.frame.size.height);
+    [headerLabel setTextAlignment:NSTextAlignmentLeft];
+//    headerLabel.frame = CGRectMake(25, 0, tableView.tableHeaderView.frame.size.width - 50, tableView.tableHeaderView.frame.size.height);
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(headerClicked:)];
     tapGesture.cancelsTouchesInView = NO;
-    [headerLabel addGestureRecognizer:tapGesture];
-    return headerLabel;
+    [cellView addGestureRecognizer:tapGesture];
+    [cellView addSubview:headerLabel];
+    
+    return cellView;
 }
 
 - (void)headerClicked:(UITapGestureRecognizer *)sender
 {
-    
-    UILabel *lbl = (UILabel*)sender.view;
-    
-    self.isShowingList = [[self.dictShowingSeciton objectForKey:[self.arrSeasons objectAtIndex:lbl.tag]] boolValue];
+    UIView *view = (UIView *)sender.view;
+    self.isShowingList = [[self.dictShowingSeciton objectForKey:[self.arrSeasons objectAtIndex:view.tag]] boolValue];
     
     if (!self.isShowingList) {
-        
-        [self.dictShowingSeciton setObject:@YES forKey:[self.arrSeasons objectAtIndex:lbl.tag]];
-        
-        self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:lbl.tag]];
-        
+        [self.dictShowingSeciton setObject:@YES forKey:[self.arrSeasons objectAtIndex:view.tag]];
+        self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:view.tag]];
         NSMutableArray *arrSectionsIndexPaths = [[NSMutableArray alloc] initWithCapacity:10];
-        
+
         for (NSInteger i=0; i<[self.arrCurrentSeason count]; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:lbl.tag];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:view.tag];
             [arrSectionsIndexPaths addObject:indexPath];
         }
         [self.tableView insertRowsAtIndexPaths:arrSectionsIndexPaths withRowAnimation:UITableViewRowAnimationTop];
     }
     else{
-        
-        [self.dictShowingSeciton setObject:@NO forKey:[self.arrSeasons objectAtIndex:lbl.tag]];
-        
-        self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:lbl.tag]];
-        
+        [self.dictShowingSeciton setObject:@NO forKey:[self.arrSeasons objectAtIndex:view.tag]];
+        self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:view.tag]];
         NSMutableArray *arrSectionsIndexPaths = [[NSMutableArray alloc] initWithCapacity:10];
         
         for (NSInteger i=0; i<[self.arrCurrentSeason count]; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:lbl.tag];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:view.tag];
             [arrSectionsIndexPaths addObject:indexPath];
         }
         [self.tableView deleteRowsAtIndexPaths:arrSectionsIndexPaths withRowAnimation:UITableViewRowAnimationTop];
-        
     }
-    
-    
 }
 
 
