@@ -9,10 +9,28 @@
 #import "DataRetriever.h"
 #import "SpotDetailCell.h"
 #import "AppDelegate.h"
+#import "ConnectionWrapper.h"
+
+
+
+@interface DataRetriever()<ConnectionWrapperDelegate>
+
+@property (strong, nonatomic) ConnectionWrapper *connectionWrapper;
+
+@end
+
 
 @implementation DataRetriever
 
-
+-(instancetype)init{
+    self = [super init];
+    
+    if (self) {
+        self.connectionWrapper = [[ConnectionWrapper alloc] init];
+        self.connectionWrapper.delegate = self;
+    }
+    return self;
+}
 
 //- (void) dataRetriever: (DataRetriever *) dataRetriever didFinishSetUpInformation:(NSArray *)dataArray{
 //    
@@ -21,7 +39,15 @@
 
 - (void) downloadDataFromURLString: (NSString *) urlString{
     
+//    [self performSelectorOnMainThread:@selector(saveData:) withObject:nil waitUntilDone:NO];
     
+    [self.connectionWrapper downloadDataFromURLString:urlString];
+}
+
+#pragma mark - ConnectionWrapperDelegate
+
+-(void)connectionWrapper:(ConnectionWrapper *)connectionWrapper didFinishDownloadingDataWithLocations:(NSDictionary *)locations{
+    [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:locations];
 }
 
 +(void)saveData: (NSString *)info{
@@ -97,7 +123,9 @@
     
     NSLog(@"---------------------");
     
-    [self.delegate dataRetriever:self didFinishSetUpInformation:@[@"monday",@"friday",@"sunday"] ];
+    [self downloadDataFromURLString:@"https://demo2843198.mockable.io/walkingdeadlocations"];
+    
+//    [self.delegate dataRetriever:self didFinishSetUpInformation:@[@"monday",@"friday",@"sunday"] ];
 }
 
 @end

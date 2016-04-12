@@ -14,6 +14,7 @@
 		0446C3E11CB6FE4400387824 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3DF1CB6FE4400387824 /* Location.m */; };
 		0446C3E61CB6FE5800387824 /* ConnectionWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3E31CB6FE5800387824 /* ConnectionWrapper.m */; };
 		0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3E51CB6FE5800387824 /* ParsingWrapper.m */; };
+		0446C3EA1CBC648800387824 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0446C3E91CBC648800387824 /* MapKit.framework */; };
 		044F56E51CAC7883005F2A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56E41CAC7883005F2A4D /* main.m */; };
 		044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56E71CAC7883005F2A4D /* AppDelegate.m */; };
 		044F56EE1CAC7883005F2A4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F56EC1CAC7883005F2A4D /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		0446C3E31CB6FE5800387824 /* ConnectionWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionWrapper.m; sourceTree = "<group>"; };
 		0446C3E41CB6FE5800387824 /* ParsingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingWrapper.h; sourceTree = "<group>"; };
 		0446C3E51CB6FE5800387824 /* ParsingWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsingWrapper.m; sourceTree = "<group>"; };
+		0446C3E91CBC648800387824 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		044F56E01CAC7883005F2A4D /* WalkingDeadLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkingDeadLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		044F56E41CAC7883005F2A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		044F56E61CAC7883005F2A4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0446C3EA1CBC648800387824 /* MapKit.framework in Frameworks */,
 				042EBFE21CB2B40B00ABB5B6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +160,7 @@
 		044F56D71CAC7883005F2A4D = {
 			isa = PBXGroup;
 			children = (
+				0446C3E91CBC648800387824 /* MapKit.framework */,
 				042EBFE11CB2B40B00ABB5B6 /* CoreData.framework */,
 				044F56E21CAC7883005F2A4D /* WalkingDeadLocations */,
 				044F56FF1CAC7884005F2A4D /* WalkingDeadLocationsTests */,
@@ -281,6 +285,11 @@
 				TargetAttributes = {
 					044F56DF1CAC7883005F2A4D = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					044F56FB1CAC7884005F2A4D = {
 						CreatedOnToolsVersion = 7.3;
