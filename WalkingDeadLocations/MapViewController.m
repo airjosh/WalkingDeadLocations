@@ -129,7 +129,7 @@
     annotation.coordinate = coordinate;
     annotation.title = location.name;
     annotation.subtitle = @"";
-    annotation.annotationIdentifier = [[NSUUID UUID] UUIDString];
+    annotation.annotationIdentifier = location.locationId;
     [self.pinnedLocations setObject:location forKey:annotation.annotationIdentifier];
     
     [self.mapView addAnnotation:annotation];
@@ -139,18 +139,18 @@
     CustomMKPointAnnotation *custAnnotation = (CustomMKPointAnnotation *)annotation;
     static NSString *annView = @"annView";
     MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:annView];
+    
     if (!annotationView) {
         annotationView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:annView];
-        annotationView.canShowCallout = YES;
-//        annotationView.image = [UIImage imageNamed:@"crossbow"];
-        
-        annotationView.calloutOffset = CGPointMake(0, 0);
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
-        [button setTitle:custAnnotation.annotationIdentifier forState:UIControlStateReserved];
-        [button addTarget:self
-                   action:@selector(viewDetails:) forControlEvents:UIControlEventTouchUpInside];
-        annotationView.rightCalloutAccessoryView = button;
     }
+    
+    annotationView.canShowCallout = YES;
+    annotationView.calloutOffset = CGPointMake(0, 0);
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [button setTitle:custAnnotation.annotationIdentifier forState:UIControlStateReserved];
+    [button addTarget:self
+               action:@selector(viewDetails:) forControlEvents:UIControlEventTouchUpInside];
+    annotationView.rightCalloutAccessoryView = button;
     return annotationView;
 }
 

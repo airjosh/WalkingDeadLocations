@@ -11,6 +11,7 @@
 
 @interface Location : NSObject
 
+@property (strong, nonatomic) NSString *locationId;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *descriptionLocation;
 @property (strong, nonatomic) GPSPoint *point;

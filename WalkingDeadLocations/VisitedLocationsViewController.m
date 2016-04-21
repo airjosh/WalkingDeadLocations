@@ -72,50 +72,39 @@
 
 #pragma mark: - Data Retriever Delegate
 - (void) dataRetriever: (DataRetriever *) dataRetriever didFinishSetUpInformation:(NSArray *)dataArray{
-    
     NSLog(@"data from method : %@",dataArray);
 }
 
 -(void)dataRetriever:(DataRetriever *)dataRetriever didNotRetrieveInformationWithError:(NSError *)error{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error!" message:@"No data was retrieved, please try again later" preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [alert dismissViewControllerAnimated:YES completion:nil];
         exit(0);
     }];
-    
     [alert addAction:ok];
-    
     [self presentViewController:alert animated:YES completion:nil];
-    
 }
 
 
 -(void)dataRetriever:(DataRetriever *)dataRetriever didRetrieveInformationWithDictionary:(NSDictionary *)dictionary{
     self.dictSeasonsList = [[NSDictionary alloc] initWithDictionary:dictionary];
     self.arrSeasons = [NSMutableArray arrayWithArray:[self.dictSeasonsList allKeys]];
-    
     self.arrSeasons = [self.arrSeasons sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     for (NSString *season in self.arrSeasons) {
         [self.dictShowingSeciton setObject:@NO forKey:season];
     }
-    
     [self.tableView reloadData];
-    
 }
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // #warning Incomplete implementation, return the number of sections
     return [self.arrSeasons count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // #warning Incomplete implementation, return the number of rows
-    
     if ([[self.dictShowingSeciton objectForKey:[self.arrSeasons objectAtIndex:section]] boolValue]) {
         self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:section]];
         return [self.arrCurrentSeason count];
@@ -123,40 +112,25 @@
     else{
         return 0;
     }
-    
-    //    return self.data.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"customVisitedCell";
     VisitedLocaitonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    //
-    // NSString   *string     = self.data[indexPath.row];
-    //
-    // cell.spotNameLbl.text = string;
-    
-    
     self.arrCurrentSeason = [self.dictSeasonsList objectForKey:[self.arrSeasons objectAtIndex:indexPath.section]];
-    
     Location *currLocation = [self.arrCurrentSeason objectAtIndex:indexPath.row];
     
-    if ([currLocation.visited boolValue])
+    if (![currLocation.visited boolValue])
     {
-        cell.imgCheck.hidden = YES;
-    } else {
-        cell.imgCheck.hidden = NO;
+        cell.imgCheck.tintColor = [UIColor whiteColor];
+    }
+    else {
+        cell.imgCheck.tintColor = [UIColor redColor];
     }
 
-    
-    
     cell.lblTitle.text = currLocation.name;
-    
-    
     return cell;
-    
 }
 
 //-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -221,8 +195,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 
 #pragma  mark - LocationSingletonDelegate
 

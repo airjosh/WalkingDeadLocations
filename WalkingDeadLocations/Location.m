@@ -16,6 +16,7 @@
     if (self) {
         self.point = [[GPSPoint alloc] init];
         self.visited = [NSNumber numberWithBool:NO];
+        self.locationId = [[NSUUID UUID] UUIDString];
     }
     return self;
 }
@@ -23,13 +24,12 @@
 -(NSString *)description{
     NSString *locationDescription;
     if (self.path != nil) {
-        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Name: %@/nDescription: %@/nPath: %@/nVisited: %@" , self.name, self.descriptionLocation, self.path, self.visited?@"YES":@"NO"];
+        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Id: %@/nName: %@/nDescription: %@/nPath: %@/nVisited: %@" , self.locationId, self.name, self.descriptionLocation, self.path, self.visited?@"YES":@"NO"];
     }
     else {
-        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Name: %@/nDescription: %@/nLatitude: %@, longitude: %@/nVisited: %@", self.name, self.descriptionLocation, self.point.latitude, self.point.longitude, self.visited?@"YES":@"NO"];
+        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Id: %@/nName: %@/nDescription: %@/nLatitude: %@, longitude: %@/nVisited: %@", self.locationId, self.name, self.descriptionLocation, self.point.latitude, self.point.longitude, self.visited?@"YES":@"NO"];
     }
-    
-    
+
     return locationDescription;
 }
 

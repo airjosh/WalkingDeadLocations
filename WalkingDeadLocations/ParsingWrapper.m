@@ -64,7 +64,7 @@
                 
                 NSDictionary *currentPoint = [[NSDictionary alloc] initWithDictionary:[location objectForKey:@"Point"]];
                 
-                if (!currentPoint) {
+                if ([[currentPoint allKeys] count] == 0) {
                     NSMutableArray *arrGPSPoints = [[NSMutableArray alloc] initWithCapacity:10];
                     currentPoint = [[NSDictionary alloc] initWithDictionary:[location objectForKey:@"LineString"]];
                     NSString *strPoints = [currentPoint objectForKey:@"coordinates"];
@@ -74,8 +74,8 @@
                         NSArray *arrPoint = [[NSArray alloc] initWithArray:[strPoint componentsSeparatedByString:@","]];
                         if ([arrPoint count] > 2) {
                             GPSPoint *point = [[GPSPoint alloc] init];
-                            point.latitude = [NSNumber numberWithDouble:[[arrPoint objectAtIndex:0] doubleValue]];
-                            point.longitude = [NSNumber numberWithDouble:[[arrPoint objectAtIndex:1] doubleValue]];
+                            point.latitude = [NSNumber numberWithDouble:[[arrPoint objectAtIndex:1] doubleValue]];
+                            point.longitude = [NSNumber numberWithDouble:[[arrPoint objectAtIndex:0] doubleValue]];
                             [arrGPSPoints addObject:point];
                         }
                     }

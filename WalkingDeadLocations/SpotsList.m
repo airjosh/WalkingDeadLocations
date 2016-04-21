@@ -49,12 +49,13 @@
     
     self.dataRetriever.delegate = self;
     [self.dataRetriever setUpInformation];
-    self.locationManager = [LocationSingleton sharedManager];
-    self.locationManager.delegate = self;
+//    self.locationManager = [LocationSingleton sharedManager];
+//    self.locationManager.delegate = self;
     
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    self.locationManager = [LocationSingleton sharedManager];
     self.locationManager.delegate = self;
     NSLog(@"Locations appear");
 }

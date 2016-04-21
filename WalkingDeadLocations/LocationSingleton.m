@@ -95,10 +95,8 @@
     self.dataRetriever = [[DataRetriever alloc] init];
     self.dictSeasonsList = [[NSDictionary alloc] init];
     self.arrSeasons = [[NSArray alloc] init];
-    
     self.dataRetriever.delegate = self;
     [self.dataRetriever setUpInformation];
-    
 }
 
 - (void) showSorryAlert{
@@ -136,9 +134,6 @@
     if ([self.delegate isKindOfClass:[UIViewController class]]) {
         [(UIViewController *)self.delegate presentViewController:alert animated:YES completion:nil];
     }
-    
-    
-    
 }
 
 -(void)dataRetriever:(DataRetriever *)dataRetriever didRetrieveInformationWithDictionary:(NSDictionary *)dictionary{
@@ -158,14 +153,13 @@
     }
 }
 
-
 - (void) starMonitoringLocation: (Location *) location {
     
     GPSPoint *point = [[GPSPoint alloc] init];
     point = location.point;
     
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake([point.latitude doubleValue], [point.longitude doubleValue]);
-    CLRegion *bridge = [[CLCircularRegion alloc]initWithCenter:center radius:100.0 identifier:@"Bridge"];
+    CLRegion *bridge = [[CLCircularRegion alloc] initWithCenter:center radius:100.0 identifier:location.locationId];
     
     [self.locationManager startMonitoringForRegion:bridge];
 }
