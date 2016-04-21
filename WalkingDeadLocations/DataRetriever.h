@@ -15,7 +15,9 @@
 
 // - (void) dataRetriever: (DataRetriever *) dataRetriever didFinishSetUpInformation: (SomeClass *) someClass;
 - (void) dataRetriever: (DataRetriever *) dataRetriever didFinishSetUpInformation:(NSArray *)dataArray;
+
 - (void) dataRetriever: (DataRetriever *) dataRetriever didRetrieveInformationWithDictionary: (NSDictionary *) dictionary;
+- (void) dataRetriever: (DataRetriever *) dataRetriever didNotRetrieveInformationWithError: (NSError *) error;
 
 @end
 

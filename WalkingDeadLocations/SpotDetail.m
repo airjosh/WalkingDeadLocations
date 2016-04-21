@@ -21,7 +21,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationController.title = self.location.name;
     [self.webContentView loadHTMLString:self.location.descriptionLocation baseURL:nil];
+    
+
+//    [self.mapView setShowsUserLocation:YES];
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
     GPSPoint *point = [[GPSPoint alloc] init];
     point = self.location.point;
     
@@ -34,24 +48,12 @@
     self.mapView.region = MKCoordinateRegionMake(coordinate, span);
     
     // Adding an Annotation
-
+    
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     annotation.coordinate = coordinate;
     annotation.title = self.location.name;
     annotation.subtitle = @"";
     [self.mapView addAnnotation:annotation];
-
-//    [self.mapView setShowsUserLocation:YES];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    
 }
 
 /*

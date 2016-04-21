@@ -21,5 +21,6 @@
 @protocol ConnectionWrapperDelegate <NSObject>
 
 - (void)connectionWrapper: (ConnectionWrapper *)connectionWrapper didFinishDownloadingDataWithLocations: (NSDictionary *)locations;
+- (void)connectionWrapper: (ConnectionWrapper *)connectionWrapper didNotFinishDownloadingDataWithError: (NSError *)error;
 
 @end

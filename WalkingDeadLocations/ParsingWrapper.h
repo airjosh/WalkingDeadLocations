@@ -25,5 +25,6 @@
 @protocol ParsingWrapperDelegate <NSObject>
 
 - (void) parsingWrapper: (ParsingWrapper *) parsingWrapper didFinishParsingWithLocations: (NSDictionary *) locations;
+- (void) parsingWrapper: (ParsingWrapper *) parsingWrapper didNotFinishParsingWithError: (NSError *) error;
 
 @end

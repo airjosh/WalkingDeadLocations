@@ -48,5 +48,9 @@
     [self.delegate connectionWrapper:self didFinishDownloadingDataWithLocations:locations];
 }
 
+-(void)parsingWrapper:(ParsingWrapper *)parsingWrapper didNotFinishParsingWithError:(NSError *)error{
+    [self.delegate connectionWrapper:self didNotFinishDownloadingDataWithError:error];
+}
+
 
 @end

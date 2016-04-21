@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *descriptionLocation;
 @property (strong, nonatomic) GPSPoint *point;
 @property (strong, nonatomic) NSArray *path;
+@property (strong, nonatomic) NSNumber *visited;
 
 -(NSString *)description;
 

@@ -50,6 +50,10 @@
     [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:locations];
 }
 
+-(void)connectionWrapper:(ConnectionWrapper *)connectionWrapper didNotFinishDownloadingDataWithError:(NSError *)error{
+    [self.delegate dataRetriever:self didNotRetrieveInformationWithError: error];
+}
+
 +(void)saveData: (NSString *)info{
     
     // get the reference to the application to acces the DB

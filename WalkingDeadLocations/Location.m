@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         self.point = [[GPSPoint alloc] init];
+        self.visited = [NSNumber numberWithBool:NO];
     }
     return self;
 }
@@ -22,10 +23,10 @@
 -(NSString *)description{
     NSString *locationDescription;
     if (self.path != nil) {
-        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Name: %@/nDescription: %@/nPath: %@", self.name, self.descriptionLocation, self.path];
+        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Name: %@/nDescription: %@/nPath: %@/nVisited: %@" , self.name, self.descriptionLocation, self.path, self.visited?@"YES":@"NO"];
     }
     else {
-        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Name: %@/nDescription: %@/nLatitude: %@, longitude: %@", self.name, self.descriptionLocation, self.point.latitude, self.point.longitude];
+        locationDescription = [NSString stringWithFormat:@"Printing descripiton of Location: Name: %@/nDescription: %@/nLatitude: %@, longitude: %@/nVisited: %@", self.name, self.descriptionLocation, self.point.latitude, self.point.longitude, self.visited?@"YES":@"NO"];
     }
     
     

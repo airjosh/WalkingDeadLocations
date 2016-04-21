@@ -18,20 +18,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Create Window object with the size of the screen
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    // Get reference to the storyboard (the name most correspond with the name of the xxx.storyboard file)
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    // Create instance of the TableViewController
-    SpotsList *initialTableViewController = [storyboard instantiateViewControllerWithIdentifier:@"SpotsList"];
-    
-    // Create Navigation controller
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:initialTableViewController];
-    
-    self.window.rootViewController = navigationController;
-    
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    
+//    // Get reference to the storyboard (the name most correspond with the name of the xxx.storyboard file)
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    // Create instance of the TableViewController
+//    SpotsList *initialTableViewController = [storyboard instantiateViewControllerWithIdentifier:@"SpotsList"];
+//    
+//    // Create Navigation controller
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:initialTableViewController];
+//    
+//    self.window.rootViewController = navigationController;
+//    
+//    [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }

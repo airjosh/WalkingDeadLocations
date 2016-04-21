@@ -15,6 +15,9 @@
 		0446C3E61CB6FE5800387824 /* ConnectionWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3E31CB6FE5800387824 /* ConnectionWrapper.m */; };
 		0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3E51CB6FE5800387824 /* ParsingWrapper.m */; };
 		0446C3EA1CBC648800387824 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0446C3E91CBC648800387824 /* MapKit.framework */; };
+		0446C4161CC7457200387824 /* VisitedLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C4151CC7457200387824 /* VisitedLocationsViewController.m */; };
+		0446C41C1CC7482300387824 /* VisitedLocaitonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C41B1CC7482300387824 /* VisitedLocaitonTableViewCell.m */; };
+		0446C41F1CC7D71100387824 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C41E1CC7D71100387824 /* MapViewController.m */; };
 		044F56E51CAC7883005F2A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56E41CAC7883005F2A4D /* main.m */; };
 		044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F56E71CAC7883005F2A4D /* AppDelegate.m */; };
 		044F56EE1CAC7883005F2A4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F56EC1CAC7883005F2A4D /* Main.storyboard */; };
@@ -24,6 +27,7 @@
 		044F57011CAC7884005F2A4D /* WalkingDeadLocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F57001CAC7884005F2A4D /* WalkingDeadLocationsTests.m */; };
 		044F570C1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F570B1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m */; };
 		048F62061CADAEC600864CE2 /* DataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F62051CADAEC600864CE2 /* DataRetriever.m */; };
+		04C512C91CC891250037473D /* CustomMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C512C81CC891250037473D /* CustomMKPointAnnotation.m */; };
 		04DA04301CACA1D000DA871B /* SpotsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA042F1CACA1D000DA871B /* SpotsList.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,12 @@
 		0446C3E41CB6FE5800387824 /* ParsingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingWrapper.h; sourceTree = "<group>"; };
 		0446C3E51CB6FE5800387824 /* ParsingWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsingWrapper.m; sourceTree = "<group>"; };
 		0446C3E91CBC648800387824 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0446C4141CC7457200387824 /* VisitedLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitedLocationsViewController.h; sourceTree = "<group>"; };
+		0446C4151CC7457200387824 /* VisitedLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitedLocationsViewController.m; sourceTree = "<group>"; };
+		0446C41A1CC7482300387824 /* VisitedLocaitonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitedLocaitonTableViewCell.h; sourceTree = "<group>"; };
+		0446C41B1CC7482300387824 /* VisitedLocaitonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitedLocaitonTableViewCell.m; sourceTree = "<group>"; };
+		0446C41D1CC7D71100387824 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0446C41E1CC7D71100387824 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		044F56E01CAC7883005F2A4D /* WalkingDeadLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkingDeadLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		044F56E41CAC7883005F2A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		044F56E61CAC7883005F2A4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +86,8 @@
 		044F570D1CAC7884005F2A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		048F62041CADAEC600864CE2 /* DataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRetriever.h; sourceTree = "<group>"; };
 		048F62051CADAEC600864CE2 /* DataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRetriever.m; sourceTree = "<group>"; };
+		04C512C71CC891250037473D /* CustomMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMKPointAnnotation.h; sourceTree = "<group>"; };
+		04C512C81CC891250037473D /* CustomMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMKPointAnnotation.m; sourceTree = "<group>"; };
 		04DA042E1CACA1D000DA871B /* SpotsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotsList.h; sourceTree = "<group>"; };
 		04DA042F1CACA1D000DA871B /* SpotsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotsList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,12 +134,9 @@
 				0446C3E81CB6FE6200387824 /* ParserClasses */,
 				044F56E61CAC7883005F2A4D /* AppDelegate.h */,
 				044F56E71CAC7883005F2A4D /* AppDelegate.m */,
-				04441BC11CAC938A00EFC4BC /* SpotDetail.h */,
-				04441BC21CAC938A00EFC4BC /* SpotDetail.m */,
-				04441BBE1CAC935700EFC4BC /* SpotDetailCell.h */,
-				04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */,
-				04DA042E1CACA1D000DA871B /* SpotsList.h */,
-				04DA042F1CACA1D000DA871B /* SpotsList.m */,
+				0446C4171CC7458200387824 /* SpotsList */,
+				0446C4181CC7459300387824 /* VisitedLocations */,
+				0446C4191CC745B200387824 /* LocationsMap */,
 				048F62041CADAEC600864CE2 /* DataRetriever.h */,
 				048F62051CADAEC600864CE2 /* DataRetriever.m */,
 			);
@@ -155,6 +164,41 @@
 				0446C3E51CB6FE5800387824 /* ParsingWrapper.m */,
 			);
 			name = ParserClasses;
+			sourceTree = "<group>";
+		};
+		0446C4171CC7458200387824 /* SpotsList */ = {
+			isa = PBXGroup;
+			children = (
+				04441BC11CAC938A00EFC4BC /* SpotDetail.h */,
+				04441BC21CAC938A00EFC4BC /* SpotDetail.m */,
+				04441BBE1CAC935700EFC4BC /* SpotDetailCell.h */,
+				04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */,
+				04DA042E1CACA1D000DA871B /* SpotsList.h */,
+				04DA042F1CACA1D000DA871B /* SpotsList.m */,
+			);
+			name = SpotsList;
+			sourceTree = "<group>";
+		};
+		0446C4181CC7459300387824 /* VisitedLocations */ = {
+			isa = PBXGroup;
+			children = (
+				0446C4141CC7457200387824 /* VisitedLocationsViewController.h */,
+				0446C4151CC7457200387824 /* VisitedLocationsViewController.m */,
+				0446C41A1CC7482300387824 /* VisitedLocaitonTableViewCell.h */,
+				0446C41B1CC7482300387824 /* VisitedLocaitonTableViewCell.m */,
+			);
+			name = VisitedLocations;
+			sourceTree = "<group>";
+		};
+		0446C4191CC745B200387824 /* LocationsMap */ = {
+			isa = PBXGroup;
+			children = (
+				0446C41D1CC7D71100387824 /* MapViewController.h */,
+				0446C41E1CC7D71100387824 /* MapViewController.m */,
+				04C512C71CC891250037473D /* CustomMKPointAnnotation.h */,
+				04C512C81CC891250037473D /* CustomMKPointAnnotation.m */,
+			);
+			name = LocationsMap;
 			sourceTree = "<group>";
 		};
 		044F56D71CAC7883005F2A4D = {
@@ -285,6 +329,7 @@
 				TargetAttributes = {
 					044F56DF1CAC7883005F2A4D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4R7NQNPHNC;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -354,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04441BC01CAC935700EFC4BC /* SpotDetailCell.m in Sources */,
+				04C512C91CC891250037473D /* CustomMKPointAnnotation.m in Sources */,
 				0446C3E61CB6FE5800387824 /* ConnectionWrapper.m in Sources */,
 				0446C3E01CB6FE4400387824 /* GPSPoint.m in Sources */,
 				044F56F11CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld in Sources */,
@@ -361,9 +407,12 @@
 				0446C3E11CB6FE4400387824 /* Location.m in Sources */,
 				0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */,
 				04DA04301CACA1D000DA871B /* SpotsList.m in Sources */,
+				0446C4161CC7457200387824 /* VisitedLocationsViewController.m in Sources */,
 				044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */,
+				0446C41C1CC7482300387824 /* VisitedLocaitonTableViewCell.m in Sources */,
 				044F56E51CAC7883005F2A4D /* main.m in Sources */,
 				048F62061CADAEC600864CE2 /* DataRetriever.m in Sources */,
+				0446C41F1CC7D71100387824 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,10 +555,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WalkingDeadLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mcs.WalkingDeadLocations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -517,10 +569,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WalkingDeadLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mcs.WalkingDeadLocations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
