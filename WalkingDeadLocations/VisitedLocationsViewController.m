@@ -11,8 +11,9 @@
 #import "Location.h"
 #import "VisitedLocaitonTableViewCell.h"
 #import "SpotDetail.h"
+#import "LocationSingleton.h"
 
-@interface VisitedLocationsViewController ()<UITableViewDelegate, UITableViewDataSource, DataRetrieverDelegate>
+@interface VisitedLocationsViewController ()<UITableViewDelegate, UITableViewDataSource, DataRetrieverDelegate, LocationSingletonDelegate>
 
 @property (strong, nonatomic) NSDictionary *dictSeasonsList;
 @property (strong, nonatomic) NSArray *arrSeasons;
@@ -21,6 +22,9 @@
 @property (strong, nonatomic) NSMutableDictionary *dictShowingSeciton;
 @property (assign, nonatomic) BOOL isShowingList;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) LocationSingleton *locationManager;
+
 
 @end
 
@@ -37,6 +41,13 @@
     
     self.dataRetriever.delegate = self;
     [self.dataRetriever setUpInformation];
+    self.locationManager = [LocationSingleton sharedManager];
+    self.locationManager.delegate = self;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    self.locationManager.delegate = self;
+    NSLog(@"VisitedLocations appear");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -210,4 +221,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
+
+#pragma  mark - LocationSingletonDelegate
+
+-(void) locationSingletonDelegate: (LocationSingleton *) locationDelegate didUpdateLocationWhitLocation:(CLLocation *)location {
+    NSLog(@"New location updated %@", [location description]);
+}
+
 @end

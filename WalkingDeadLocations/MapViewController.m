@@ -13,8 +13,9 @@
 #import "Location.h"
 #import "SpotDetail.h"
 #import "CustomMKPointAnnotation.h"
+#import "LocationSingleton.h"
 
-@interface MapViewController ()<DataRetrieverDelegate>
+@interface MapViewController ()<DataRetrieverDelegate, CLLocationManagerDelegate, LocationSingletonDelegate>
 
 @property (strong, nonatomic) NSDictionary *dictSeasonsList;
 @property (strong, nonatomic) NSMutableDictionary *pinnedLocations;
@@ -22,6 +23,8 @@
 @property (strong, nonatomic) NSArray *arrCurrentSeason;
 @property (strong, nonatomic) DataRetriever *dataRetriever;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) LocationSingleton *locationManager;
+
 
 @end
 
@@ -31,6 +34,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.pinnedLocations = [[NSMutableDictionary alloc] initWithCapacity:100];
+    
+    self.locationManager = [LocationSingleton sharedManager];
+    self.locationManager.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +52,10 @@
     
     self.dataRetriever.delegate = self;
     [self.dataRetriever setUpInformation];
+    
+    self.locationManager.delegate = self;
+    
+    NSLog(@"Mapview appear");
 }
 
 #pragma mark - Navigation
@@ -150,6 +160,12 @@
     
     NSLog(@"Pin clicked with ID: %@", [btn titleForState: UIControlStateReserved]);
     [self performSegueWithIdentifier:@"toSpotDetailFromMap" sender:btn];
+}
+
+#pragma  mark - LocationSingletonDelegate
+
+-(void) locationSingletonDelegate: (LocationSingleton *) locationDelegate didUpdateLocationWhitLocation:(CLLocation *)location {
+    NSLog(@"New location updated %@", [location description]);
 }
 
 @end

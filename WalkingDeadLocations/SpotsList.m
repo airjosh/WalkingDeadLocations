@@ -11,8 +11,10 @@
 #import "SpotDetail.h"
 #import "DataRetriever.h"
 #import "Location.h"
+#import "LocationSingleton.h"
 
-@interface SpotsList () <DataRetrieverDelegate>
+
+@interface SpotsList () <DataRetrieverDelegate, LocationSingletonDelegate>
 
 
 @property (nonatomic,strong) NSArray * data;
@@ -23,6 +25,7 @@
 @property (strong, nonatomic) DataRetriever *dataRetriever;
 @property (strong, nonatomic) NSMutableDictionary *dictShowingSeciton;
 @property (assign, nonatomic) BOOL isShowingList;
+@property (strong, nonatomic) LocationSingleton *locationManager;
 
 
 @end
@@ -46,7 +49,14 @@
     
     self.dataRetriever.delegate = self;
     [self.dataRetriever setUpInformation];
+    self.locationManager = [LocationSingleton sharedManager];
+    self.locationManager.delegate = self;
     
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    self.locationManager.delegate = self;
+    NSLog(@"Locations appear");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -261,6 +271,14 @@
 //    detailViewController.navigationItem.title = string;
     
 }
+
+
+#pragma  mark - LocationSingletonDelegate
+
+-(void) locationSingletonDelegate: (LocationSingleton *) locationDelegate didUpdateLocationWhitLocation:(CLLocation *)location {
+    NSLog(@"New location updated %@", [location description]);
+}
+
 
 
 @end

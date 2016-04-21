@@ -28,6 +28,9 @@
 		044F570C1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F570B1CAC7884005F2A4D /* WalkingDeadLocationsUITests.m */; };
 		048F62061CADAEC600864CE2 /* DataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F62051CADAEC600864CE2 /* DataRetriever.m */; };
 		04C512C91CC891250037473D /* CustomMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C512C81CC891250037473D /* CustomMKPointAnnotation.m */; };
+		04C512CC1CC910520037473D /* GeofencingGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C512CB1CC910520037473D /* GeofencingGenerator.m */; };
+		04C512CF1CC911710037473D /* LocationSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C512CE1CC911710037473D /* LocationSingleton.m */; };
+		04C512D11CC917F50037473D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C512D01CC917F50037473D /* CoreLocation.framework */; };
 		04DA04301CACA1D000DA871B /* SpotsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA042F1CACA1D000DA871B /* SpotsList.m */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,11 @@
 		048F62051CADAEC600864CE2 /* DataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRetriever.m; sourceTree = "<group>"; };
 		04C512C71CC891250037473D /* CustomMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMKPointAnnotation.h; sourceTree = "<group>"; };
 		04C512C81CC891250037473D /* CustomMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMKPointAnnotation.m; sourceTree = "<group>"; };
+		04C512CA1CC910520037473D /* GeofencingGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofencingGenerator.h; sourceTree = "<group>"; };
+		04C512CB1CC910520037473D /* GeofencingGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofencingGenerator.m; sourceTree = "<group>"; };
+		04C512CD1CC911710037473D /* LocationSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSingleton.h; sourceTree = "<group>"; };
+		04C512CE1CC911710037473D /* LocationSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSingleton.m; sourceTree = "<group>"; };
+		04C512D01CC917F50037473D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		04DA042E1CACA1D000DA871B /* SpotsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotsList.h; sourceTree = "<group>"; };
 		04DA042F1CACA1D000DA871B /* SpotsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotsList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C512D11CC917F50037473D /* CoreLocation.framework in Frameworks */,
 				0446C3EA1CBC648800387824 /* MapKit.framework in Frameworks */,
 				042EBFE21CB2B40B00ABB5B6 /* CoreData.framework in Frameworks */,
 			);
@@ -139,6 +148,10 @@
 				0446C4191CC745B200387824 /* LocationsMap */,
 				048F62041CADAEC600864CE2 /* DataRetriever.h */,
 				048F62051CADAEC600864CE2 /* DataRetriever.m */,
+				04C512CA1CC910520037473D /* GeofencingGenerator.h */,
+				04C512CB1CC910520037473D /* GeofencingGenerator.m */,
+				04C512CD1CC911710037473D /* LocationSingleton.h */,
+				04C512CE1CC911710037473D /* LocationSingleton.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -204,6 +217,7 @@
 		044F56D71CAC7883005F2A4D = {
 			isa = PBXGroup;
 			children = (
+				04C512D01CC917F50037473D /* CoreLocation.framework */,
 				0446C3E91CBC648800387824 /* MapKit.framework */,
 				042EBFE11CB2B40B00ABB5B6 /* CoreData.framework */,
 				044F56E21CAC7883005F2A4D /* WalkingDeadLocations */,
@@ -407,9 +421,11 @@
 				0446C3E11CB6FE4400387824 /* Location.m in Sources */,
 				0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */,
 				04DA04301CACA1D000DA871B /* SpotsList.m in Sources */,
+				04C512CF1CC911710037473D /* LocationSingleton.m in Sources */,
 				0446C4161CC7457200387824 /* VisitedLocationsViewController.m in Sources */,
 				044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */,
 				0446C41C1CC7482300387824 /* VisitedLocaitonTableViewCell.m in Sources */,
+				04C512CC1CC910520037473D /* GeofencingGenerator.m in Sources */,
 				044F56E51CAC7883005F2A4D /* main.m in Sources */,
 				048F62061CADAEC600864CE2 /* DataRetriever.m in Sources */,
 				0446C41F1CC7D71100387824 /* MapViewController.m in Sources */,
