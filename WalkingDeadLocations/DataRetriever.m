@@ -12,6 +12,8 @@
 #import "Location.h"
 #import "GPSPoint.h"
 #import "ConnectionWrapper.h"
+#import "DBLocation.h"
+#import "DBGPSPoint.h"
 
 
 
@@ -49,6 +51,10 @@
 #pragma mark - ConnectionWrapperDelegate
 
 -(void)connectionWrapper:(ConnectionWrapper *)connectionWrapper didFinishDownloadingDataWithLocations:(NSDictionary *)locations{
+    
+    
+    
+    
     [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:locations];
 }
 
@@ -57,8 +63,6 @@
 }
 
 - (void)saveData: (NSString *)info{
-    
-    
     if(!true){
         NSLog(@"inside saveData method: %@",info);
         return;
@@ -83,7 +87,7 @@
         NSNumber *lat = [NSNumber numberWithDouble:doubleLoop];
         
         
-        NSManagedObject * newPath = [NSEntityDescription insertNewObjectForEntityForName:@"GPSPointPath" inManagedObjectContext:context];
+        NSManagedObject * newPath = [NSEntityDescription insertNewObjectForEntityForName:@"DBGPSPointPath" inManagedObjectContext:context];
         
         [newPath setValue:lat forKey:@"latitude"];
         [newPath setValue:log forKey:@"longitude"];
@@ -97,15 +101,17 @@
     NSNumber *longitud = [NSNumber numberWithDouble:10.5];
     NSNumber *latitud = [NSNumber numberWithDouble:10.0];
     
-    NSManagedObject * newGPS = [NSEntityDescription insertNewObjectForEntityForName:@"GPSPoint" inManagedObjectContext:context];
+    NSManagedObject * newGPS = [NSEntityDescription insertNewObjectForEntityForName:@"DBGPSPoint" inManagedObjectContext:context];
     [newGPS setValue:latitud forKey:@"latitude"];
     [newGPS setValue:longitud forKey:@"longitude"];
     
-    NSManagedObject * newSpot = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
+    NSManagedObject * newSpot = [NSEntityDescription insertNewObjectForEntityForName:@"DBLocation" inManagedObjectContext:context];
     [newSpot setValue:@"A descriptionLocation " forKey:@"descriptionLocation"];
     [newSpot setValue:@"Some name" forKey:@"name"];
-    [newSpot setValue:pathSet forKey:@"paths"];
-    [newSpot setValue:[NSSet setWithObject:newGPS] forKey:@"points"];
+    [newSpot setValue:pathSet forKey:@"path"];
+    [newSpot setValue:[[NSUUID UUID] UUIDString]  forKey:@"locationId"];
+    [newSpot setValue:[NSNumber numberWithBool:NO] forKey:@"visited"];
+    [newSpot setValue:[NSSet setWithObject:newGPS] forKey:@"point"];
     
     
     // create the error object in case if we have to use it
@@ -141,7 +147,7 @@
     // Location
     // GPSPoint
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Location" inManagedObjectContext:managedObjectContext]];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"DBLocation" inManagedObjectContext:managedObjectContext]];
     
     
     [fetchRequest setIncludesSubentities:NO]; //Omit subentities. Default is YES (i.e. include subentities)
@@ -212,7 +218,7 @@
         //  NSLog(@"class: %@",fetchedObjects.class); // Array
         //  NSLog(@"class pos 0: %@",[fetchedObjects[0] class]); //Location
         
-        Location * someLocation = fetchedObjects[0]; //Location name
+        Location * someLocation = [[Location alloc] init];// fetchedObjects[0]; //Location name
         NSLog(@"some location name: %@",someLocation.name);
         NSLog(@"some location description: %@",someLocation.descriptionLocation);
         // NSLog(@"some location path class: %@",[someLocation.path class]); // Array
@@ -220,14 +226,14 @@
         // NSLog(@"some location points class: %@",[someLocation.points class]); // _NSFaultingMutableSet
         // NSLog(@"some location points : %@",[someLocation.points allObjects]); //
         
-        NSArray *arrayPoints = [someLocation.points allObjects];
+        NSArray *arrayPoints = someLocation.path;
         
         for(id itemPath in arrayPoints){
             NSLog(@"point latitude : %@",[itemPath latitude]);
             NSLog(@"point longitude: %@",[itemPath longitude]);
         }
         
-        NSArray *arrayPaths = [someLocation.paths allObjects];
+        NSArray *arrayPaths = someLocation.path;
         
         //  NSArray *result = [[someLocation.paths allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"latitude" ascending:YES]]];
         

@@ -79,19 +79,16 @@
                             [arrGPSPoints addObject:point];
                         }
                     }
-                    // TODO change paths
-                    // newLocation.path = arrGPSPoints;
+                
+                    newLocation.path = arrGPSPoints;
                 }
                 else {
                     NSString *strCoord = [currentPoint objectForKey:@"coordinates"];
                     NSArray *arrCoordinates = [[NSArray alloc] initWithArray:[strCoord componentsSeparatedByString:@","]];
                     
                     if ([arrCoordinates count] > 2) {
-                        // TODO change points
-                        /*
                         newLocation.point.latitude = [NSNumber numberWithDouble:[[arrCoordinates objectAtIndex:1] doubleValue]];
                         newLocation.point.longitude = [NSNumber numberWithDouble:[[arrCoordinates objectAtIndex:0] doubleValue]];
-                        */
                     }
                 }
                 

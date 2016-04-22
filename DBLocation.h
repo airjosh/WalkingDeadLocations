@@ -1,5 +1,5 @@
 //
-//  GPSPoint.h
+//  DBLocation.h
 //  WalkingDeadLocations
 //
 //  Created by MCS on 4/21/16.
@@ -9,18 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Location;
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GPSPoint : NSManagedObject
+@interface DBLocation : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
-
--(NSString *)description;
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "GPSPoint+CoreDataProperties.h"
+#import "DBLocation+CoreDataProperties.h"

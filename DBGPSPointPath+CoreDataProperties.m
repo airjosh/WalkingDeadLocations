@@ -1,5 +1,5 @@
 //
-//  GPSPointPath+CoreDataProperties.m
+//  DBGPSPointPath+CoreDataProperties.m
 //  WalkingDeadLocations
 //
 //  Created by MCS on 4/21/16.
@@ -9,12 +9,12 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "GPSPointPath+CoreDataProperties.h"
+#import "DBGPSPointPath+CoreDataProperties.h"
 
-@implementation GPSPointPath (CoreDataProperties)
+@implementation DBGPSPointPath (CoreDataProperties)
 
 @dynamic latitude;
 @dynamic longitude;
-@dynamic locationPaths;
+@dynamic locationPath;
 
 @end

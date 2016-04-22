@@ -1,17 +1,14 @@
 //
 //  GPSPoint.m
-//  WalkingDeadLocations
+//  FakeJsonRetrieve
 //
-//  Created by MCS on 4/21/16.
+//  Created by MCS on 3/30/16.
 //  Copyright © 2016 MCS. All rights reserved.
 //
 
 #import "GPSPoint.h"
-#import "Location.h"
 
 @implementation GPSPoint
-
-// Insert code here to add functionality to your managed object subclass
 
 -(NSString *)description {
     NSString *desc = @"";

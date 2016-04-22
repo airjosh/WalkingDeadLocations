@@ -70,7 +70,7 @@
     }
 }
 
-#pragma mark: - Data Retriever Delegate
+#pragma mark - Data Retriever Delegate
 - (void) dataRetriever: (DataRetriever *) dataRetriever didFinishSetUpInformation:(NSArray *)dataArray{
     NSLog(@"data from method : %@",dataArray);
 }

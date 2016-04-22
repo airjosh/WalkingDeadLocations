@@ -1,5 +1,5 @@
 //
-//  GPSPoint+CoreDataProperties.h
+//  DBGPSPoint+CoreDataProperties.h
 //  WalkingDeadLocations
 //
 //  Created by MCS on 4/21/16.
@@ -9,15 +9,15 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "GPSPoint.h"
+#import "DBGPSPoint.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GPSPoint (CoreDataProperties)
+@interface DBGPSPoint (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *latitude;
 @property (nullable, nonatomic, retain) NSNumber *longitude;
-@property (nullable, nonatomic, retain) Location *locations;
+@property (nullable, nonatomic, retain) DBLocation *locationPoint;
 
 @end
 

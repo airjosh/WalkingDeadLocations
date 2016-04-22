@@ -113,8 +113,7 @@
 
 -(void)insertLocationInMap: (Location *) location{
     GPSPoint *point = [[GPSPoint alloc] init];
-    // TODO change points
-    // point = location.point;
+    point = location.point;
     
     CLLocationDegrees latitude = [point.latitude doubleValue];
     CLLocationDegrees longitude = [point.longitude doubleValue];

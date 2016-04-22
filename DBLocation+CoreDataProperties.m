@@ -1,5 +1,5 @@
 //
-//  Location+CoreDataProperties.m
+//  DBLocation+CoreDataProperties.m
 //  WalkingDeadLocations
 //
 //  Created by MCS on 4/21/16.
@@ -9,15 +9,15 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Location+CoreDataProperties.h"
+#import "DBLocation+CoreDataProperties.h"
 
-@implementation Location (CoreDataProperties)
+@implementation DBLocation (CoreDataProperties)
 
 @dynamic descriptionLocation;
-@dynamic name;
 @dynamic locationId;
+@dynamic name;
 @dynamic visited;
-@dynamic points;
-@dynamic paths;
+@dynamic point;
+@dynamic path;
 
 @end

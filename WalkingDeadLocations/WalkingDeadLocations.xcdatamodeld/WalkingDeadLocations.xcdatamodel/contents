@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
-    <entity name="GPSPoint" representedClassName="GPSPoint" syncable="YES">
+    <entity name="DBGPSPoint" representedClassName="DBGPSPoint" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="points" inverseEntity="Location" syncable="YES"/>
+        <relationship name="locationPoint" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBLocation" inverseName="point" inverseEntity="DBLocation" syncable="YES"/>
     </entity>
-    <entity name="GPSPointPath" representedClassName="GPSPointPath" syncable="YES">
+    <entity name="DBGPSPointPath" representedClassName="DBGPSPointPath" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="locationPaths" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="paths" inverseEntity="Location" syncable="YES"/>
+        <relationship name="locationPath" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBLocation" inverseName="path" inverseEntity="DBLocation" syncable="YES"/>
     </entity>
-    <entity name="Location" representedClassName="Location" syncable="YES">
+    <entity name="DBLocation" representedClassName="DBLocation" syncable="YES">
         <attribute name="descriptionLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visited" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="paths" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GPSPointPath" inverseName="locationPaths" inverseEntity="GPSPointPath" syncable="YES"/>
-        <relationship name="points" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GPSPoint" inverseName="locations" inverseEntity="GPSPoint" syncable="YES"/>
+        <relationship name="path" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBGPSPointPath" inverseName="locationPath" inverseEntity="DBGPSPointPath" syncable="YES"/>
+        <relationship name="point" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBGPSPoint" inverseName="locationPoint" inverseEntity="DBGPSPoint" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GPSPoint" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Location" positionX="-63" positionY="0" width="128" height="135"/>
-        <element name="GPSPointPath" positionX="-45" positionY="27" width="128" height="90"/>
+        <element name="DBLocation" positionX="-14744" positionY="1980" width="128" height="133"/>
+        <element name="DBGPSPoint" positionX="-14571" positionY="2115" width="128" height="88"/>
+        <element name="DBGPSPointPath" positionX="-14987" positionY="2115" width="128" height="88"/>
     </elements>
 </model>
