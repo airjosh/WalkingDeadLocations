@@ -34,6 +34,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    // TODO change points
+    /*
     GPSPoint *point = [[GPSPoint alloc] init];
     point = self.location.point;
     
@@ -44,6 +46,7 @@
     else {
         [self setRouteMap];
     }
+     */
 
 }
 
@@ -68,8 +71,8 @@
 }
 
 - (void) setRouteMap {
-    
-    NSArray *arrRoute = self.location.path;
+    // TODO change paths
+    NSArray *arrRoute = self.location.paths;
     GPSPoint *point = [[GPSPoint alloc] init];
     point = [arrRoute objectAtIndex: (NSUInteger)([arrRoute count] / 2 )];
     

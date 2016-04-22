@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041800A21CC9A274009A3FC6 /* Location+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 041800971CC9A274009A3FC6 /* Location+CoreDataProperties.m */; };
+		041800A31CC9A274009A3FC6 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 041800991CC9A274009A3FC6 /* Location.m */; };
+		041800A41CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418009B1CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.m */; };
+		041800A51CC9A274009A3FC6 /* GPSPointPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418009D1CC9A274009A3FC6 /* GPSPointPath.m */; };
+		041800A61CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418009F1CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.m */; };
+		041800A71CC9A274009A3FC6 /* GPSPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 041800A11CC9A274009A3FC6 /* GPSPoint.m */; };
 		042EBFE21CB2B40B00ABB5B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042EBFE11CB2B40B00ABB5B6 /* CoreData.framework */; };
 		04441BC01CAC935700EFC4BC /* SpotDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */; };
 		04441BC31CAC938A00EFC4BC /* SpotDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 04441BC21CAC938A00EFC4BC /* SpotDetail.m */; };
-		0446C3E01CB6FE4400387824 /* GPSPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3DD1CB6FE4400387824 /* GPSPoint.m */; };
-		0446C3E11CB6FE4400387824 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3DF1CB6FE4400387824 /* Location.m */; };
 		0446C3E61CB6FE5800387824 /* ConnectionWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3E31CB6FE5800387824 /* ConnectionWrapper.m */; };
 		0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C3E51CB6FE5800387824 /* ParsingWrapper.m */; };
 		0446C3EA1CBC648800387824 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0446C3E91CBC648800387824 /* MapKit.framework */; };
@@ -52,15 +56,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041800961CC9A274009A3FC6 /* Location+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Location+CoreDataProperties.h"; path = "../Location+CoreDataProperties.h"; sourceTree = "<group>"; };
+		041800971CC9A274009A3FC6 /* Location+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+CoreDataProperties.m"; path = "../Location+CoreDataProperties.m"; sourceTree = "<group>"; };
+		041800981CC9A274009A3FC6 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = ../Location.h; sourceTree = "<group>"; };
+		041800991CC9A274009A3FC6 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = ../Location.m; sourceTree = "<group>"; };
+		0418009A1CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GPSPointPath+CoreDataProperties.h"; path = "../GPSPointPath+CoreDataProperties.h"; sourceTree = "<group>"; };
+		0418009B1CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GPSPointPath+CoreDataProperties.m"; path = "../GPSPointPath+CoreDataProperties.m"; sourceTree = "<group>"; };
+		0418009C1CC9A274009A3FC6 /* GPSPointPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSPointPath.h; path = ../GPSPointPath.h; sourceTree = "<group>"; };
+		0418009D1CC9A274009A3FC6 /* GPSPointPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSPointPath.m; path = ../GPSPointPath.m; sourceTree = "<group>"; };
+		0418009E1CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GPSPoint+CoreDataProperties.h"; path = "../GPSPoint+CoreDataProperties.h"; sourceTree = "<group>"; };
+		0418009F1CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GPSPoint+CoreDataProperties.m"; path = "../GPSPoint+CoreDataProperties.m"; sourceTree = "<group>"; };
+		041800A01CC9A274009A3FC6 /* GPSPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSPoint.h; path = ../GPSPoint.h; sourceTree = "<group>"; };
+		041800A11CC9A274009A3FC6 /* GPSPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSPoint.m; path = ../GPSPoint.m; sourceTree = "<group>"; };
 		042EBFE11CB2B40B00ABB5B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		04441BBE1CAC935700EFC4BC /* SpotDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotDetailCell.h; sourceTree = "<group>"; };
 		04441BBF1CAC935700EFC4BC /* SpotDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotDetailCell.m; sourceTree = "<group>"; };
 		04441BC11CAC938A00EFC4BC /* SpotDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotDetail.h; sourceTree = "<group>"; };
 		04441BC21CAC938A00EFC4BC /* SpotDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotDetail.m; sourceTree = "<group>"; };
-		0446C3DC1CB6FE4400387824 /* GPSPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSPoint.h; sourceTree = "<group>"; };
-		0446C3DD1CB6FE4400387824 /* GPSPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSPoint.m; sourceTree = "<group>"; };
-		0446C3DE1CB6FE4400387824 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		0446C3DF1CB6FE4400387824 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		0446C3E21CB6FE5800387824 /* ConnectionWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionWrapper.h; sourceTree = "<group>"; };
 		0446C3E31CB6FE5800387824 /* ConnectionWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionWrapper.m; sourceTree = "<group>"; };
 		0446C3E41CB6FE5800387824 /* ParsingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingWrapper.h; sourceTree = "<group>"; };
@@ -159,10 +171,18 @@
 		04441BC41CAC999A00EFC4BC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0446C3DC1CB6FE4400387824 /* GPSPoint.h */,
-				0446C3DD1CB6FE4400387824 /* GPSPoint.m */,
-				0446C3DE1CB6FE4400387824 /* Location.h */,
-				0446C3DF1CB6FE4400387824 /* Location.m */,
+				041800961CC9A274009A3FC6 /* Location+CoreDataProperties.h */,
+				041800971CC9A274009A3FC6 /* Location+CoreDataProperties.m */,
+				041800981CC9A274009A3FC6 /* Location.h */,
+				041800991CC9A274009A3FC6 /* Location.m */,
+				0418009A1CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.h */,
+				0418009B1CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.m */,
+				0418009C1CC9A274009A3FC6 /* GPSPointPath.h */,
+				0418009D1CC9A274009A3FC6 /* GPSPointPath.m */,
+				0418009E1CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.h */,
+				0418009F1CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.m */,
+				041800A01CC9A274009A3FC6 /* GPSPoint.h */,
+				041800A11CC9A274009A3FC6 /* GPSPoint.m */,
 				044F56EF1CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld */,
 			);
 			name = Model;
@@ -415,20 +435,24 @@
 				04441BC01CAC935700EFC4BC /* SpotDetailCell.m in Sources */,
 				04C512C91CC891250037473D /* CustomMKPointAnnotation.m in Sources */,
 				0446C3E61CB6FE5800387824 /* ConnectionWrapper.m in Sources */,
-				0446C3E01CB6FE4400387824 /* GPSPoint.m in Sources */,
+				041800A61CC9A274009A3FC6 /* GPSPoint+CoreDataProperties.m in Sources */,
 				044F56F11CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld in Sources */,
 				04441BC31CAC938A00EFC4BC /* SpotDetail.m in Sources */,
-				0446C3E11CB6FE4400387824 /* Location.m in Sources */,
 				0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */,
+				041800A41CC9A274009A3FC6 /* GPSPointPath+CoreDataProperties.m in Sources */,
 				04DA04301CACA1D000DA871B /* SpotsList.m in Sources */,
 				04C512CF1CC911710037473D /* LocationSingleton.m in Sources */,
+				041800A51CC9A274009A3FC6 /* GPSPointPath.m in Sources */,
 				0446C4161CC7457200387824 /* VisitedLocationsViewController.m in Sources */,
 				044F56E81CAC7883005F2A4D /* AppDelegate.m in Sources */,
 				0446C41C1CC7482300387824 /* VisitedLocaitonTableViewCell.m in Sources */,
 				04C512CC1CC910520037473D /* GeofencingGenerator.m in Sources */,
+				041800A21CC9A274009A3FC6 /* Location+CoreDataProperties.m in Sources */,
 				044F56E51CAC7883005F2A4D /* main.m in Sources */,
 				048F62061CADAEC600864CE2 /* DataRetriever.m in Sources */,
+				041800A31CC9A274009A3FC6 /* Location.m in Sources */,
 				0446C41F1CC7D71100387824 /* MapViewController.m in Sources */,
+				041800A71CC9A274009A3FC6 /* GPSPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

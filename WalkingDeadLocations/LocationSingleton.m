@@ -154,14 +154,15 @@
 }
 
 - (void) starMonitoringLocation: (Location *) location {
-    
+    // TODO change points
+    /*
     GPSPoint *point = [[GPSPoint alloc] init];
     point = location.point;
-    
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake([point.latitude doubleValue], [point.longitude doubleValue]);
     CLRegion *bridge = [[CLCircularRegion alloc] initWithCenter:center radius:100.0 identifier:location.locationId];
     
     [self.locationManager startMonitoringForRegion:bridge];
+     */
 }
 
 -(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
