@@ -2,7 +2,7 @@
 //  DBLocation+CoreDataProperties.m
 //  WalkingDeadLocations
 //
-//  Created by MCS on 4/21/16.
+//  Created by MCS on 4/22/16.
 //  Copyright © 2016 MCS. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,7 +17,8 @@
 @dynamic locationId;
 @dynamic name;
 @dynamic visited;
-@dynamic point;
+@dynamic season;
 @dynamic path;
+@dynamic point;
 
 @end

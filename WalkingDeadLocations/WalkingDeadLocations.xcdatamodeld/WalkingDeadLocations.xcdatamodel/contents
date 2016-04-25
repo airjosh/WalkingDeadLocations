@@ -14,13 +14,14 @@
         <attribute name="descriptionLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="season" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visited" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="path" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBGPSPointPath" inverseName="locationPath" inverseEntity="DBGPSPointPath" syncable="YES"/>
         <relationship name="point" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBGPSPoint" inverseName="locationPoint" inverseEntity="DBGPSPoint" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DBLocation" positionX="-14744" positionY="1980" width="128" height="133"/>
         <element name="DBGPSPoint" positionX="-14571" positionY="2115" width="128" height="88"/>
         <element name="DBGPSPointPath" positionX="-14987" positionY="2115" width="128" height="88"/>
+        <element name="DBLocation" positionX="-14744" positionY="1980" width="128" height="150"/>
     </elements>
 </model>

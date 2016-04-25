@@ -52,8 +52,10 @@
 
 -(void)connectionWrapper:(ConnectionWrapper *)connectionWrapper didFinishDownloadingDataWithLocations:(NSDictionary *)locations{
     
-    
-    
+    // code to save the data here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self saveData:locations];
+    });
     
     [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:locations];
 }
@@ -62,74 +64,73 @@
     [self.delegate dataRetriever:self didNotRetrieveInformationWithError: error];
 }
 
-- (void)saveData: (NSString *)info{
-    if(!true){
-        NSLog(@"inside saveData method: %@",info);
-        return;
-    }
+- (void)saveData: (NSDictionary *)infoDictionary{
+
     // get the reference to the application to acces the DB
     AppDelegate * appDelegate = [[UIApplication sharedApplication]delegate];
     
     // access to the data through the reference of the application
     NSManagedObjectContext * context = [appDelegate managedObjectContext];
     
+    NSDictionary * dictSeasonsList = [[NSDictionary alloc] initWithDictionary:infoDictionary];
+    NSArray * arrSeasons = [NSMutableArray arrayWithArray:[dictSeasonsList allKeys]];
     
-    //NSMutableArray *pathArray = @[@"path 1",@"path 2",@"path 3",@"path 4"];
-    NSMutableArray *pathMutArray = [[NSMutableArray alloc] initWithCapacity:4];
+    arrSeasons = [arrSeasons sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
-    
-    
-    //for(int i = 0; i<=pathArray.count; i++){
-    for(int i = 0; i<4; i++){
-        double doubleLoop = 22.5+i;
-        NSNumber *log = [NSNumber numberWithDouble:doubleLoop];
-        doubleLoop = 45.0+i;
-        NSNumber *lat = [NSNumber numberWithDouble:doubleLoop];
-        
-        
-        NSManagedObject * newPath = [NSEntityDescription insertNewObjectForEntityForName:@"DBGPSPointPath" inManagedObjectContext:context];
-        
-        [newPath setValue:lat forKey:@"latitude"];
-        [newPath setValue:log forKey:@"longitude"];
-        [pathMutArray addObject:newPath];
-        //        [pathMutArray setObject:newPath atIndexedSubscript:i];
-    }
-    
-    //    NSArray *pathArray = [pathMutArray copy];
-    NSSet * pathSet = [NSSet setWithArray: [pathMutArray copy]];
-    
-    NSNumber *longitud = [NSNumber numberWithDouble:10.5];
-    NSNumber *latitud = [NSNumber numberWithDouble:10.0];
-    
-    NSManagedObject * newGPS = [NSEntityDescription insertNewObjectForEntityForName:@"DBGPSPoint" inManagedObjectContext:context];
-    [newGPS setValue:latitud forKey:@"latitude"];
-    [newGPS setValue:longitud forKey:@"longitude"];
-    
-    NSManagedObject * newSpot = [NSEntityDescription insertNewObjectForEntityForName:@"DBLocation" inManagedObjectContext:context];
-    [newSpot setValue:@"A descriptionLocation " forKey:@"descriptionLocation"];
-    [newSpot setValue:@"Some name" forKey:@"name"];
-    [newSpot setValue:pathSet forKey:@"path"];
-    [newSpot setValue:[[NSUUID UUID] UUIDString]  forKey:@"locationId"];
-    [newSpot setValue:[NSNumber numberWithBool:NO] forKey:@"visited"];
-    [newSpot setValue:[NSSet setWithObject:newGPS] forKey:@"point"];
-    
-    
-    // create the error object in case if we have to use it
-    NSError * aError;
-    
-    // try for error
-    if (![context save:&aError ]) {
-        
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Save Action"
-                                      message:@"Fail"
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* okAlert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:okAlert];
-        
-        
-        
+    NSArray *currentSeason = [[NSArray alloc] init];
+    for (NSString *season in arrSeasons) {
+        currentSeason = [dictSeasonsList objectForKey:season];
+        for (Location *currentLocation in currentSeason) {
+            
+            NSMutableArray *pathMutArray = [[NSMutableArray alloc] initWithCapacity:40];
+            if(currentLocation.path != NULL || currentLocation.path.count > 0){
+                
+                for(int i = 0; i<currentLocation.path.count; i++){
+                    NSNumber *log = [NSNumber numberWithDouble:[[currentLocation.path[i] longitude] doubleValue]];
+                    NSNumber *lat = [NSNumber numberWithDouble:[[currentLocation.path[i] latitude] doubleValue]];
+                    NSManagedObject * newPath = [NSEntityDescription insertNewObjectForEntityForName:@"DBGPSPointPath" inManagedObjectContext:context];
+                    
+                    [newPath setValue:lat forKey:@"latitude"];
+                    [newPath setValue:log forKey:@"longitude"];
+                    [pathMutArray addObject:newPath];
+                }
+            }
+            
+            NSSet    *pathSet  = [NSSet setWithArray: [pathMutArray copy]];
+            NSNumber *longitud = [NSNumber numberWithDouble:[currentLocation.point.longitude doubleValue]];
+            NSNumber *latitud  = [NSNumber numberWithDouble:[currentLocation.point.latitude doubleValue]];
+            
+            NSManagedObject * newGPS = [NSEntityDescription insertNewObjectForEntityForName:@"DBGPSPoint" inManagedObjectContext:context];
+            [newGPS setValue:latitud forKey:@"latitude"];
+            [newGPS setValue:longitud forKey:@"longitude"];
+            
+            NSManagedObject * newSpot = [NSEntityDescription insertNewObjectForEntityForName:@"DBLocation" inManagedObjectContext:context];
+            
+            [newSpot setValue:currentLocation.descriptionLocation forKey:@"descriptionLocation"];
+            [newSpot setValue:currentLocation.name forKey:@"name"];
+            [newSpot setValue:pathSet forKey:@"path"];
+//            [newSpot setValue:[[NSUUID UUID] UUIDString]  forKey:@"locationId"];
+            [newSpot setValue:currentLocation.locationId   forKey:@"locationId"];
+//            [newSpot setValue:[NSNumber numberWithBool:NO] forKey:@"visited"];
+            [newSpot setValue:currentLocation.visited forKey:@"visited"];
+            [newSpot setValue:[NSSet setWithObject:newGPS] forKey:@"point"];
+            [newSpot setValue:season forKey:@"season"];
+            
+            // create the error object in case if we have to use it
+            NSError * aError;
+            
+            // try for error
+            if (![context save:&aError ]) {
+                
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"Save Action"
+                                              message:@"Fail"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okAlert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:okAlert];
+            }
+            
+        }// fin for
     }
     
 }// end of saveData for testing
@@ -137,151 +138,108 @@
 
 - (void)setUpInformation{
     
-    // Get Managed Object Context
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    NSManagedObjectContext *managedObjectContext = [appDelegate managedObjectContext];
+    dispatch_block_t block = ^
+    {
+        @synchronized(self){
+            
+            // Get Managed Object Context
+            AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+            NSManagedObjectContext *managedObjectContext = [appDelegate managedObjectContext];
+            
+            /*
+             * Retrieve Values
+             */
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+            [fetchRequest setEntity:[NSEntityDescription entityForName:@"DBLocation" inManagedObjectContext:managedObjectContext]];
+            
+            [fetchRequest setIncludesSubentities:NO]; //Omit subentities. Default is YES (i.e. include subentities)
+            
+            NSError *err;
+            NSUInteger count = [managedObjectContext countForFetchRequest:fetchRequest error:&err];
+            if(count == NSNotFound) {
+                //Handle error
+                NSLog(@"ns not found");
+                return;
+            }
+            
+            if(count <= 0){
+                // brings info from URL
+                
+                NSLog(@"Not info found in database. Retrieve from URL.");
+                [self downloadDataFromURLString:@"https://demo2843198.mockable.io/walkingdeadlocations"];
+                managedObjectContext = nil;
+                fetchRequest = nil;
+                appDelegate = nil;
+            }else {
+                // brings info from data base
+                NSLog(@"brings info from data base");
+                NSMutableDictionary * locations = [[NSMutableDictionary alloc] init];
+                
+                NSArray *keys = [NSArray arrayWithObjects:@"Season 1", @"Season 2",@"Season 3",@"Season 4",@"Season 5",@"Season 6", nil];
+                for (NSString *key in keys) {
+                    
+                    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"season == %@", key]];
+                    NSError *error;
+                    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+                    if (fetchedObjects == nil) {
+                        // Handle the error.
+                        NSLog(@"error on retrieve info from the database: %@",error);
+                        return;
+                    }
+                    
+                    NSMutableArray *objects = [[NSMutableArray alloc]init ];
+                    
+                    for(DBLocation * locationDB in fetchedObjects){
+                        
+                        Location * someLocation = [[Location alloc] init];
+                        NSMutableArray * tmpArray = [[NSMutableArray alloc] init];
+                        
+                        if ([locationDB.path count] > 0) {
+                            NSArray * tmp = [locationDB.path allObjects];
+                            for (int i = 0; i<[locationDB.path count]; i++) {
+                                GPSPoint *tmpGPS = [[GPSPoint alloc] init];
+                                tmpGPS.latitude = [tmp[i] latitude];
+                                tmpGPS.longitude = [tmp[i] longitude];
+                                [tmpArray addObject:tmpGPS];
+                            }
+                        }
+                        if ([tmpArray count] > 0) {
+                            someLocation.path = [NSArray arrayWithArray:tmpArray];
+                        }
+                        else {
+                            someLocation.point = (GPSPoint*)[[locationDB.point allObjects] firstObject];
+                        }
+                        someLocation.locationId = locationDB.locationId;
+                        someLocation.name = locationDB.name;
+                        someLocation.descriptionLocation = locationDB.descriptionLocation;
+                        
+                        someLocation.visited = locationDB.visited;
+                        
+                        [objects addObject:someLocation];
+                    }
+                    
+                    [locations setObject:objects forKey:key];
+                }
+                
+                [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:[NSDictionary dictionaryWithDictionary:locations]];
+                
+            } // end ELSE
+                        
+            NSLog(@"---------------------");
+
+        }
+    };
     
-    /*
-     * Retrieve Values
-     */
-    // Location
-    // GPSPoint
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"DBLocation" inManagedObjectContext:managedObjectContext]];
-    
-    
-    [fetchRequest setIncludesSubentities:NO]; //Omit subentities. Default is YES (i.e. include subentities)
-    
-    NSError *err;
-    NSUInteger count = [managedObjectContext countForFetchRequest:fetchRequest error:&err];
-    if(count == NSNotFound) {
-        //Handle error
-        NSLog(@"ns not found");
-        return;
+    if ([NSThread isMainThread])
+    {
+        block();
+    }
+    else
+    {
+        dispatch_sync(dispatch_get_main_queue(), block);
     }
     
     
-    
-    
-    if(count <= 0){
-        // brings info from URL
-        NSLog(@"is the entity null === IF IF IF === for Location ? : %@",fetchRequest);
-        NSLog(@"the count in if: %lu",(unsigned long)count);
-        
-        if(fetchRequest == NULL) NSLog(@"is null");
-        
-        if(fetchRequest == nil) NSLog(@"is nil");
-        
-        // and then save it in the local database
-        [self saveData:@"go and save the data"];
-        
-        // review if the info really stored
-        
-        NSArray *results = [managedObjectContext executeFetchRequest:fetchRequest error:&err];
-        
-        
-        // where results.count is the same as count
-        NSLog(@"the array of results: %lu",(unsigned long)results.count);
-        NSLog(@"and the contet is: %@",results);
-        
-    }else {
-        // brings info from data base
-        
-        NSLog(@"is the entity null === ELSE ELSE ELSE === for Location? : %@",fetchRequest);
-        NSLog(@"the count in else: %lu",(unsigned long)count);
-        
-        /*
-         // review if the info really stored
-         
-         NSArray *results = [managedObjectContext executeFetchRequest:fetchRequest error:&err];
-         
-         // where results.count is the same as count
-         NSLog(@"the array of results: %lu",(unsigned long)results.count);
-         NSLog(@"and the contet is: %@",results[0]);
-         */
-        
-        
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        NSArray *sortDescriptors = @[sortDescriptor];
-        [fetchRequest setSortDescriptors:sortDescriptors];
-        
-        NSError *error;
-        NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects == nil) {
-            // Handle the error.
-        }
-        //        else{
-        //            NSLog(@"and the contet is: %@",fetchedObjects);
-        //        }
-        
-        NSLog(@"size %lu",(unsigned long)fetchedObjects.count);
-        //  NSLog(@"class: %@",fetchedObjects.class); // Array
-        //  NSLog(@"class pos 0: %@",[fetchedObjects[0] class]); //Location
-        
-        Location * someLocation = [[Location alloc] init];// fetchedObjects[0]; //Location name
-        NSLog(@"some location name: %@",someLocation.name);
-        NSLog(@"some location description: %@",someLocation.descriptionLocation);
-        // NSLog(@"some location path class: %@",[someLocation.path class]); // Array
-        // NSLog(@"some location path : %@",[someLocation paths]); // Array
-        // NSLog(@"some location points class: %@",[someLocation.points class]); // _NSFaultingMutableSet
-        // NSLog(@"some location points : %@",[someLocation.points allObjects]); //
-        
-        NSArray *arrayPoints = someLocation.path;
-        
-        for(id itemPath in arrayPoints){
-            NSLog(@"point latitude : %@",[itemPath latitude]);
-            NSLog(@"point longitude: %@",[itemPath longitude]);
-        }
-        
-        NSArray *arrayPaths = someLocation.path;
-        
-        //  NSArray *result = [[someLocation.paths allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"latitude" ascending:YES]]];
-        
-        
-        for(id itemPath in arrayPaths){
-            NSLog(@"path latitude : %@",[itemPath latitude]);
-            NSLog(@"path longitude: %@",[itemPath longitude]);
-        }
-        
-        //  NSLog(@"++++ el size: %lu",(unsigned long)result.count);
-        //        for(id some in [someLocation.paths allObjects]){
-        //            NSLog(@"the object latitude : %@",some);
-        //            NSLog(@"the object longitude: %@",some);
-        //        }
-        
-        if(!true){ // si si quiero borrar
-            
-            NSError *error2 = nil;
-            for (NSManagedObject *object in fetchedObjects) {
-                [managedObjectContext deleteObject:object];
-            }
-            
-            NSError *saveError = nil;
-            if (![managedObjectContext save:&saveError]) {
-                NSLog(@"algo");
-                
-            }
-        }
-        
-        
-        
-        
-        
-        // deleted ,, momently
-        
-        
-        //[managedObjectContext deleteObject:self];
-        //[managedObjectContext deleteObject:someLocation];
-        // [managedObjectContext deleteObject:fetchedObjects[0]];
-        
-    } // end ELSE
-    
-    
-    NSLog(@"---------------------");
-    
-    [self downloadDataFromURLString:@"https://demo2843198.mockable.io/walkingdeadlocations"];
-    
-//    [self.delegate dataRetriever:self didFinishSetUpInformation:@[@"monday",@"friday",@"sunday"] ];
-}
+}// end of setUpInformation
 
 @end

@@ -29,6 +29,6 @@
 
 - (void)setUpInformation;
 
-- (void)saveData: (NSString *)info;
+- (void)saveData: (NSDictionary *)infoDictionary;
 
 @end
