@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode"> 
+
+    <!--
+            Provide one or more waypoints containing a latitude/longitude pair. If you provide one
+            waypoint, Xcode will simulate that specific location. If you provide multiple waypoints,
+            Xcode will simulate a route visitng each waypoint.
+     Point 1    33.8741849,-84.4545705/
+     Point 2    33.8729291,-84.4557008/
+     Point 3    33.8721446,-84.4561174/
+     Point 4    33.8726791,-84.4564607/
+     Point 5    33.8736322,-84.4562784/
+     Point 6    33.874719,-84.456096/
+     Point 7    33.8758502,-84.4559565/
+     Point 8    33.8773948,-84.4565068/
+     Point 9    33.8818025,-84.4570222/
+     Point 10   33.8844325,-84.4587379/
+     Point 11   33.8742068,-84.4565144
+     -->
+    <wpt lat="33.8741849" lon="-84.4545705">
+         <name>Point 1</name>
+<!--         <time>2016-09-24T14:55:37Z</time>-->
+	</wpt>
+    <wpt lat="33.8729291" lon="-84.4557008">
+        <name>Point 2</name>
+<!--        <time>2016-09-24T14:55:38Z</time>-->
+    </wpt>
+    <wpt lat="33.8721446" lon="-84.4561174">
+        <name>Point 3</name>
+<!--        <time>2016-09-24T14:55:39Z</time>-->
+    </wpt>
+    <wpt lat="33.8726791" lon="-84.4564607">
+        <name>Point 4</name>
+<!--        <time>2016-09-24T14:55:40Z</time>-->
+    </wpt>
+    <wpt lat="33.8736322" lon="-84.4562784">
+        <name>Point 5</name>
+<!--        <time>2016-09-24T14:55:41Z</time>-->
+    </wpt>
+    <wpt lat="33.874719" lon="-84.456096">
+        <name>Point 6</name>
+<!--        <time>2016-09-24T14:55:42Z</time>-->
+    </wpt>
+    <wpt lat="33.8758502" lon="-84.4559565">
+        <name>Point 7</name>
+<!--        <time>2016-09-24T14:55:43Z</time>-->
+    </wpt>
+    <wpt lat="33.8773948" lon="-84.4565068">
+        <name>Point 8</name>
+<!--        <time>2016-09-24T14:55:44Z</time>-->
+    </wpt>
+    <wpt lat="33.8818025" lon="-84.4570222">
+        <name>Point 9</name>
+<!--        <time>2016-09-24T14:55:45Z</time>-->
+    </wpt>
+    <wpt lat="33.8844325" lon="-84.4587379">
+        <name>Point 10</name>
+<!--        <time>2016-09-24T14:55:46Z</time>-->
+    </wpt>
+    <wpt lat="33.8742068" lon="-84.4565144">
+        <name>Point 11</name>
+<!--        <time>2016-09-24T14:55:47Z</time>-->
+    </wpt>
+
+
+
+</gpx>

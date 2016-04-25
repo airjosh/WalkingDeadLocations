@@ -26,6 +26,7 @@
 @property (strong, nonatomic) LocationSingleton *locationManager;
 
 
+
 @end
 
 @implementation MapViewController
@@ -37,6 +38,8 @@
     
     self.locationManager = [LocationSingleton sharedManager];
     self.locationManager.delegate = self;
+    
+    self.locationIdFromNotification = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,15 +48,23 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+    self.locationManager.delegate = self;
     self.dataRetriever = [[DataRetriever alloc] init];
     //    self.dictSeasonsList = [[NSDictionary alloc] init];
     self.arrSeasons = [[NSArray alloc] init];
     self.arrCurrentSeason = [[NSArray alloc] init];
     
     self.dataRetriever.delegate = self;
-    [self.dataRetriever setUpInformation];
     
-    self.locationManager.delegate = self;
+    
+    if (![self.locationIdFromNotification isEqualToString:@""]) {
+        [self performSegueWithIdentifier:@"toSpotDetailFromMap" sender:nil];
+    }
+    
+    dispatch_async(dispatch_queue_create("refreshDataQueue", 0), ^{
+        [self.dataRetriever setUpInformation];
+    });
     
     NSLog(@"Mapview appear");
 }
@@ -61,8 +72,18 @@
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIButton *btn = (UIButton *) sender;
-    Location *location = [self.pinnedLocations objectForKey:[btn titleForState:UIControlStateReserved]];
+    
+    Location *location;
+    
+    if (sender) {
+        UIButton *btn = (UIButton *) sender;
+        location = [self.pinnedLocations objectForKey:[btn titleForState:UIControlStateReserved]];
+    }
+    else {
+        location = [self.pinnedLocations objectForKey: self.locationIdFromNotification];
+        self.locationIdFromNotification = @"";
+    }
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
@@ -122,6 +143,7 @@
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
     MKCoordinateSpan span = MKCoordinateSpanMake(deltaLatitude, deltaLongitude);
     self.mapView.region = MKCoordinateRegionMake(coordinate, span);
+    self.mapView.showsUserLocation = YES;
     
     // Adding an Annotation
     
@@ -136,6 +158,8 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
+    if (annotation == mapView.userLocation) return nil;
+    
     CustomMKPointAnnotation *custAnnotation = (CustomMKPointAnnotation *)annotation;
     static NSString *annView = @"annView";
     MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:annView];
@@ -155,15 +179,12 @@
 }
 
 -(void) viewDetails: (id) sender {
-    
     UIButton *btn = (UIButton *) sender;
-    
     NSLog(@"Pin clicked with ID: %@", [btn titleForState: UIControlStateReserved]);
     [self performSegueWithIdentifier:@"toSpotDetailFromMap" sender:btn];
 }
 
 #pragma  mark - LocationSingletonDelegate
-
 -(void) locationSingletonDelegate: (LocationSingleton *) locationDelegate didUpdateLocationWhitLocation:(CLLocation *)location {
     NSLog(@"New location updated %@", [location description]);
 }

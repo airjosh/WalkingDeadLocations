@@ -37,6 +37,7 @@
 		04C513121CC9BED60037473D /* DBGPSPointPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5130A1CC9BED60037473D /* DBGPSPointPath.m */; };
 		04C513131CC9BED60037473D /* DBGPSPoint+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5130C1CC9BED60037473D /* DBGPSPoint+CoreDataProperties.m */; };
 		04C513141CC9BED60037473D /* DBGPSPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5130E1CC9BED60037473D /* DBGPSPoint.m */; };
+		04C513171CCA9D870037473D /* WDLCLRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C513161CCA9D870037473D /* WDLCLRegion.m */; };
 		04DA04301CACA1D000DA871B /* SpotsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA042F1CACA1D000DA871B /* SpotsList.m */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,9 @@
 		04C5130C1CC9BED60037473D /* DBGPSPoint+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBGPSPoint+CoreDataProperties.m"; sourceTree = "<group>"; };
 		04C5130D1CC9BED60037473D /* DBGPSPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGPSPoint.h; sourceTree = "<group>"; };
 		04C5130E1CC9BED60037473D /* DBGPSPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGPSPoint.m; sourceTree = "<group>"; };
+		04C513151CCA9D870037473D /* WDLCLRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLCLRegion.h; sourceTree = "<group>"; };
+		04C513161CCA9D870037473D /* WDLCLRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLCLRegion.m; sourceTree = "<group>"; };
+		04C513181CCADFF20037473D /* TravelToCDC.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TravelToCDC.gpx; sourceTree = "<group>"; };
 		04DA042E1CACA1D000DA871B /* SpotsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotsList.h; sourceTree = "<group>"; };
 		04DA042F1CACA1D000DA871B /* SpotsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotsList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,6 +289,9 @@
 			children = (
 				044F56F71CAC7883005F2A4D /* Info.plist */,
 				044F56E41CAC7883005F2A4D /* main.m */,
+				04C513151CCA9D870037473D /* WDLCLRegion.h */,
+				04C513161CCA9D870037473D /* WDLCLRegion.m */,
+				04C513181CCADFF20037473D /* TravelToCDC.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -460,6 +467,7 @@
 				044F56F11CAC7883005F2A4D /* WalkingDeadLocations.xcdatamodeld in Sources */,
 				04441BC31CAC938A00EFC4BC /* SpotDetail.m in Sources */,
 				0446C3E71CB6FE5800387824 /* ParsingWrapper.m in Sources */,
+				04C513171CCA9D870037473D /* WDLCLRegion.m in Sources */,
 				04DA04301CACA1D000DA871B /* SpotsList.m in Sources */,
 				04C513101CC9BED60037473D /* DBLocation.m in Sources */,
 				04C512D71CC9BAA60037473D /* GPSPoint.m in Sources */,

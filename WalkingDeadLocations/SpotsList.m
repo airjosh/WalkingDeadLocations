@@ -55,8 +55,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    self.locationManager = [LocationSingleton sharedManager];
-    self.locationManager.delegate = self;
+    
     NSLog(@"Locations appear");
 }
 
@@ -87,8 +86,11 @@
     
 }
 
-
 -(void)dataRetriever:(DataRetriever *)dataRetriever didRetrieveInformationWithDictionary:(NSDictionary *)dictionary{
+    
+    self.locationManager = [LocationSingleton sharedManager];
+    self.locationManager.delegate = self;
+    
     self.dictSeasonsList = [[NSDictionary alloc] initWithDictionary:dictionary];
     self.arrSeasons = [NSMutableArray arrayWithArray:[self.dictSeasonsList allKeys]];
     

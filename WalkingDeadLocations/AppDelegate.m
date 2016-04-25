@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "SpotsList.h"
+//#import "SpotsList.h"
+#import "MapViewController.h"
 
 @interface AppDelegate ()
 
@@ -33,6 +34,10 @@
 //    
 //    [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge categories:nil]];
+    }
     return YES;
 }
 
@@ -137,6 +142,44 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
+    }
+}
+
+#pragma mark - Local Notification
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIApplicationState appState = UIApplicationStateActive;
+    if ([application respondsToSelector:@selector(applicationState)])
+        appState = application.applicationState;
+    
+    if (appState == UIApplicationStateActive)
+    {
+        //Don't do enything
+        application.applicationIconBadgeNumber = 0;
+    }
+    else
+    {
+        UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+        tabController.selectedIndex = 0;
+        application.applicationIconBadgeNumber = 0;
+        //Go to tab 2 and load detail for notification id
+        NSDictionary *dictUser = notification.userInfo;
+        
+        NSString *locationId = [dictUser objectForKey:@"locationId"];
+        
+        
+        NSArray *arrTabViews = tabController.viewControllers;
+        MapViewController *mapView;
+        for (UINavigationController *navController in arrTabViews) {
+            if ([[navController.viewControllers firstObject] isKindOfClass:[MapViewController class]]) {
+                 mapView = [navController.viewControllers firstObject];
+                break;
+            }
+        }
+        mapView.locationIdFromNotification = locationId;
+        tabController.selectedIndex = 2;
+        
     }
 }
 

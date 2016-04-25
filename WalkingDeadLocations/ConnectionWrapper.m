@@ -45,11 +45,16 @@
 #pragma mark - ParsingWrapper Delegate
 
 -(void)parsingWrapper:(ParsingWrapper *)parsingWrapper didFinishParsingWithLocations:(NSDictionary *)locations{
-    [self.delegate connectionWrapper:self didFinishDownloadingDataWithLocations:locations];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate connectionWrapper:self didFinishDownloadingDataWithLocations:locations];
+    });
+    
 }
 
 -(void)parsingWrapper:(ParsingWrapper *)parsingWrapper didNotFinishParsingWithError:(NSError *)error{
-    [self.delegate connectionWrapper:self didNotFinishDownloadingDataWithError:error];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate connectionWrapper:self didNotFinishDownloadingDataWithError:error];
+    });
 }
 
 
