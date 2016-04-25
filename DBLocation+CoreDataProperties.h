@@ -2,7 +2,7 @@
 //  DBLocation+CoreDataProperties.h
 //  WalkingDeadLocations
 //
-//  Created by MCS on 4/21/16.
+//  Created by MCS on 4/22/16.
 //  Copyright © 2016 MCS. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,22 +19,23 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *locationId;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSNumber *visited;
-@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *point;
-@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *path;
+@property (nullable, nonatomic, retain) NSString *season;
+@property (nullable, nonatomic, retain) NSSet<DBGPSPointPath *> *path;
+@property (nullable, nonatomic, retain) NSSet<DBGPSPoint *> *point;
 
 @end
 
 @interface DBLocation (CoreDataGeneratedAccessors)
 
-- (void)addPointObject:(NSManagedObject *)value;
-- (void)removePointObject:(NSManagedObject *)value;
-- (void)addPoint:(NSSet<NSManagedObject *> *)values;
-- (void)removePoint:(NSSet<NSManagedObject *> *)values;
+- (void)addPathObject:(DBGPSPointPath *)value;
+- (void)removePathObject:(DBGPSPointPath *)value;
+- (void)addPath:(NSSet<DBGPSPointPath *> *)values;
+- (void)removePath:(NSSet<DBGPSPointPath *> *)values;
 
-- (void)addPathObject:(NSManagedObject *)value;
-- (void)removePathObject:(NSManagedObject *)value;
-- (void)addPath:(NSSet<NSManagedObject *> *)values;
-- (void)removePath:(NSSet<NSManagedObject *> *)values;
+- (void)addPointObject:(DBGPSPoint *)value;
+- (void)removePointObject:(DBGPSPoint *)value;
+- (void)addPoint:(NSSet<DBGPSPoint *> *)values;
+- (void)removePoint:(NSSet<DBGPSPoint *> *)values;
 
 @end
 

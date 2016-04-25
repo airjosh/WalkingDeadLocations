@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSDictionary *dictSeasonsList;
 @property (strong, nonatomic) NSArray *arrSeasons;
 @property (strong, nonatomic) NSArray *arrCurrentSeason;
-@property (strong, nonatomic) DataRetriever *dataRetriever;
+@property (strong, atomic) DataRetriever *dataRetriever;
 @property (strong, nonatomic) NSMutableDictionary *dictShowingSeciton;
 @property (assign, nonatomic) BOOL isShowingList;
 @property (strong, nonatomic) LocationSingleton *locationManager;
