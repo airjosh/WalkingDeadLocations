@@ -48,7 +48,11 @@
     self.dictShowingSeciton = [[NSMutableDictionary alloc] initWithCapacity:10];
     
     self.dataRetriever.delegate = self;
-    [self.dataRetriever setUpInformation];
+    
+    dispatch_async(dispatch_queue_create("setUpInformationQueue", 0), ^{
+        [self.dataRetriever setUpInformation];
+    });
+    
 //    self.locationManager = [LocationSingleton sharedManager];
 //    self.locationManager.delegate = self;
     

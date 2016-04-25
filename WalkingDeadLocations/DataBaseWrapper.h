@@ -11,7 +11,7 @@
 
 @interface DataBaseWrapper : NSObject
 
-- (void) updateLocation:(NSNumber*)isVisited withLocationId:(NSString*)locationId;
-- (Location *) getLocationWith: (NSString*)locationId;
++ (void) updateIsVisited:(NSNumber*)isVisited withLocationId:(NSString*)locationId;
++ (Location *) getLocationWithId: (NSString*)locationId;
 
 @end

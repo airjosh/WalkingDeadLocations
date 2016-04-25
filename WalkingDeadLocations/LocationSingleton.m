@@ -12,6 +12,7 @@
 #import "GPSPoint.h"
 #import "DataRetriever.h"
 #import "WDLCLRegion.h"
+#import "DataBaseWrapper.h"
 
 @interface LocationSingleton ()<CLLocationManagerDelegate, DataRetrieverDelegate>
 
@@ -47,7 +48,7 @@
         
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         self.myLocation = [[CLLocation alloc] init];
         
         switch ([CLLocationManager authorizationStatus]) {
@@ -78,6 +79,9 @@
     [self.delegate locationSingletonDelegate:self didUpdateLocationWhitLocation:lastLocation];
 //    NSLog(@"Location updated\n lat: %lf \n long: %lf", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
     
+    dispatch_async(dispatch_queue_create("setUpInformationQueue", 0), ^{
+        [self.dataRetriever setUpInformation];
+    });
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
@@ -101,7 +105,11 @@
     self.arrSeasons = [[NSArray alloc] init];
     self.arrNearRegions = [[NSMutableArray alloc] initWithCapacity:20];
     self.dataRetriever.delegate = self;
-    [self.dataRetriever setUpInformation];
+    
+    dispatch_async(dispatch_queue_create("setUpInformationQueue", 0), ^{
+        [self.dataRetriever setUpInformation];
+    });
+//    [self.dataRetriever setUpInformation];
 }
 
 - (void) showSorryAlert{
@@ -182,12 +190,19 @@
     for (Location *currentLocation in arrLocations) {
         GPSPoint *point = [[GPSPoint alloc] init];
         point = currentLocation.point;
+        
+        if ([point.latitude doubleValue] < 1) {
+//            NSLog(@"No point, get first point from path");
+            point = [currentLocation.path firstObject];
+        }
+        
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake([point.latitude doubleValue], [point.longitude doubleValue]);
         CLLocation *clLocation = [[CLLocation alloc] initWithLatitude:[point.latitude doubleValue] longitude:[point.longitude doubleValue]];
         
         WDLCLRegion *currentRegion = [[WDLCLRegion alloc] initCircularRegionWithCenter:center radius:20.0 identifier:currentLocation.locationId andDistanceFromLocation:[self.myLocation distanceFromLocation:clLocation]];
         
         [arrRegions addObject:currentRegion];
+    
         [self.dictRegions setObject:currentLocation forKey:currentLocation.locationId];
     }
     
@@ -211,6 +226,10 @@
     for (WDLCLRegion *currentRegion in self.arrNearRegions) {
         if ([self.locationManager.monitoredRegions count] < 20) {
             [self.locationManager startMonitoringForRegion:currentRegion];
+            Location *currentLocation = [DataBaseWrapper getLocationWithId:currentRegion.identifier];
+            
+//            NSLog(@"%@", currentLocation);
+            
         }
         else {
             break;
@@ -234,6 +253,8 @@
     
 //    set visited spot from region id
     
+    [DataBaseWrapper updateIsVisited:[NSNumber numberWithBool:YES] withLocationId:region.identifier];
+    
 //    local notification to alert user
     
     NSMutableDictionary *dictUser = [[NSMutableDictionary alloc] initWithCapacity:1];
@@ -252,7 +273,9 @@
     
 //    refresh monitoring regions
     
-    
+    dispatch_async(dispatch_queue_create("setUpInformationQueue", 0), ^{
+        [self.dataRetriever setUpInformation];
+    });
 }
 
 -(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {

@@ -127,11 +127,11 @@
             </objects>
             <point key="canvasLocation" x="2608" y="319"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Locations-->
         <scene sceneID="upG-3W-LeL">
             <objects>
                 <navigationController id="aRo-Hu-xYQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="f2T-B5-cql"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="List" id="f2T-B5-cql"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tI2-2p-D2x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -145,11 +145,11 @@
             </objects>
             <point key="canvasLocation" x="632" y="-635"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Visited-->
         <scene sceneID="980-Mc-QYL">
             <objects>
                 <navigationController id="zrM-nf-aQ6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="gNz-Ng-ur0"/>
+                    <tabBarItem key="tabBarItem" title="Visited" image="Visited" id="gNz-Ng-ur0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NPd-oZ-ZxY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -240,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="1196" y="297"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Map-->
         <scene sceneID="7Hf-xI-v4R">
             <objects>
                 <navigationController id="fk7-3Q-f78" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="AAZ-2u-hh5"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map" id="AAZ-2u-hh5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WUF-l0-mfI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -310,6 +310,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="List" width="29" height="29"/>
+        <image name="Map" width="29" height="29"/>
+        <image name="Visited" width="29" height="29"/>
         <image name="crossbow" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>

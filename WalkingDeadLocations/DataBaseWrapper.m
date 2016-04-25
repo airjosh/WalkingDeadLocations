@@ -15,7 +15,7 @@
 @implementation DataBaseWrapper
 
 
-- (void) updateLocation:(NSNumber*)isVisited withLocationId:(NSString*)locationId{
++ (void) updateIsVisited:(NSNumber*)isVisited withLocationId:(NSString*)locationId{
     // Get Managed Object Context
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *managedObjectContext = [appDelegate managedObjectContext];
@@ -55,10 +55,13 @@
         UIAlertAction* okAlert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:okAlert];
     }
+    else {
+        NSLog(@"DB update successful");
+    }
     
 }
 
-- (Location *) getLocationWith: (NSString*)locationId{
++ (Location *) getLocationWithId: (NSString*)locationId{
    
     // Get Managed Object Context
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;

@@ -62,10 +62,11 @@
         [self performSegueWithIdentifier:@"toSpotDetailFromMap" sender:nil];
     }
     
-    dispatch_async(dispatch_queue_create("refreshDataQueue", 0), ^{
-        [self.dataRetriever setUpInformation];
-    });
     
+//    dispatch_async(dispatch_queue_create("setUpInformationQueue", 0), ^{
+        [self.dataRetriever setUpInformation];
+//    });
+
     NSLog(@"Mapview appear");
 }
 

@@ -53,11 +53,15 @@
 -(void)connectionWrapper:(ConnectionWrapper *)connectionWrapper didFinishDownloadingDataWithLocations:(NSDictionary *)locations{
     
     // code to save the data here
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_sync(dispatch_get_main_queue(), ^{
+//        
+//    });
+    
+    
+    dispatch_async(dispatch_queue_create("saveDBQueue", 0), ^{
         [self saveData:locations];
     });
-    
-    [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:locations];
+//    [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:locations];
 }
 
 -(void)connectionWrapper:(ConnectionWrapper *)connectionWrapper didNotFinishDownloadingDataWithError:(NSError *)error{
@@ -117,21 +121,27 @@
             [newSpot setValue:season forKey:@"season"];
             
             // create the error object in case if we have to use it
-            NSError * aError;
+//            NSError * aError;
             
             // try for error
-            if (![context save:&aError ]) {
-                
-                UIAlertController * alert=   [UIAlertController
-                                              alertControllerWithTitle:@"Save Action"
-                                              message:@"Fail"
-                                              preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction* okAlert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:okAlert];
-            }
+//            if (![context save:&aError ]) {
+//                
+//                UIAlertController * alert=   [UIAlertController
+//                                              alertControllerWithTitle:@"Save Action"
+//                                              message:@"Fail"
+//                                              preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction* okAlert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+//                [alert addAction:okAlert];
+//            }
             
         }// fin for
     }
+    
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self.delegate dataRetriever:self didRetrieveInformationWithDictionary:infoDictionary];
+    });
+    
     
 }// end of saveData for testing
 
